@@ -1,0 +1,27 @@
+d:\users\stwalkerster\documents\visual studio 2010\Projects\BeebMaze\BeebMaze\bin\Debug\BeebMaze.exe
+d:\users\stwalkerster\documents\visual studio 2010\Projects\BeebMaze\BeebMaze\bin\Debug\BeebMaze.pdb
+d:\users\stwalkerster\documents\visual studio 2010\Projects\BeebMaze\BeebMaze\obj\x86\Debug\ResolveAssemblyReference.cache
+d:\users\stwalkerster\documents\visual studio 2010\Projects\BeebMaze\BeebMaze\obj\x86\Debug\BeebMaze.Block.resources
+d:\users\stwalkerster\documents\visual studio 2010\Projects\BeebMaze\BeebMaze\obj\x86\Debug\BeebMaze.Properties.Resources.resources
+d:\users\stwalkerster\documents\visual studio 2010\Projects\BeebMaze\BeebMaze\obj\x86\Debug\GenerateResource.read.1.tlog
+d:\users\stwalkerster\documents\visual studio 2010\Projects\BeebMaze\BeebMaze\obj\x86\Debug\GenerateResource.write.1.tlog
+d:\users\stwalkerster\documents\visual studio 2010\Projects\BeebMaze\BeebMaze\obj\x86\Debug\BeebMaze.exe
+d:\users\stwalkerster\documents\visual studio 2010\Projects\BeebMaze\BeebMaze\obj\x86\Debug\BeebMaze.pdb
+d:\users\stwalkerster\documents\visual studio 2010\Projects\BeebMaze\BeebMaze\obj\x86\Debug\BeebMaze.Form1.resources
+D:\Users\stwalkerster\My Documents\Visual Studio 2010\Projects\BeebMaze\BeebMaze\obj\x86\Debug\BeebMaze.exe
+D:\Users\stwalkerster\My Documents\Visual Studio 2010\Projects\BeebMaze\BeebMaze\obj\x86\Debug\BeebMaze.pdb
+D:\Users\stwalkerster\My Documents\Visual Studio 2010\Projects\BeebMaze\BeebMaze\bin\Debug\BeebMaze.exe
+D:\Users\stwalkerster\My Documents\Visual Studio 2010\Projects\BeebMaze\BeebMaze\bin\Debug\BeebMaze.pdb
+D:\Users\stwalkerster\My Documents\Visual Studio 2010\Projects\BeebMaze\BeebMaze\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\Users\stwalkerster\My Documents\Visual Studio 2010\Projects\BeebMaze\BeebMaze\obj\x86\Debug\BeebMaze.Block.resources
+D:\Users\stwalkerster\My Documents\Visual Studio 2010\Projects\BeebMaze\BeebMaze\obj\x86\Debug\BeebMaze.Form1.resources
+D:\Users\stwalkerster\My Documents\Visual Studio 2010\Projects\BeebMaze\BeebMaze\obj\x86\Debug\BeebMaze.Properties.Resources.resources
+D:\Users\stwalkerster\My Documents\Visual Studio 2010\Projects\BeebMaze\BeebMaze\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\Users\stwalkerster\My Documents\Visual Studio 2010\Projects\BeebMaze\BeebMaze\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\Users\stwalkerster\My Documents\Visual Studio 2010\Projects\BeebMaze\BeebMaze\bin\Debug\BeebMaze.exe.config
+D:\Users\stwalkerster\My Documents\Visual Studio 2010\Projects\BeebMaze\BeebMaze\obj\x86\Debug\BeebMaze.Options.resources
+D:\Users\stwalkerster\My Documents\Visual Studio 2010\Projects\BeebMaze\BeebMaze\obj\x86\Debug\BeebMaze.AboutBox1.resources
+D:\Users\stwalkerster\My Documents\Visual Studio 2010\Projects\BeebMaze\BeebMaze\bin\Debug\BeebMaze.exe.manifest
+D:\Users\stwalkerster\My Documents\Visual Studio 2010\Projects\BeebMaze\BeebMaze\bin\Debug\BeebMaze.application
+D:\Users\stwalkerster\My Documents\Visual Studio 2010\Projects\BeebMaze\BeebMaze\obj\x86\Debug\BeebMaze.exe.manifest
+D:\Users\stwalkerster\My Documents\Visual Studio 2010\Projects\BeebMaze\BeebMaze\obj\x86\Debug\BeebMaze.application

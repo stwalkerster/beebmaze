@@ -1,0 +1,417 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="livetemplates.csharp.usevar">False</setting>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Block.Designer.cs" caret="211" fromTop="6" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Form1.Designer.cs" caret="0" fromTop="0" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/d:Properties/f:Resources.Designer.cs" caret="0" fromTop="0" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Options.Designer.cs" caret="0" fromTop="0" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Options.cs" caret="2436" fromTop="17" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Form1.cs" caret="5357" fromTop="154" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Block.cs" caret="155" fromTop="6" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:AboutBox1.cs" caret="202" fromTop="3" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Wall.cs" caret="415" fromTop="19" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/d:Properties/f:AssemblyInfo.cs" caret="1523" fromTop="39" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Program.cs" caret="457" fromTop="17" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:app.config" caret="0" fromTop="0" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Options.cs" caret="3308" fromTop="27" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Options.cs" caret="3308" fromTop="31" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Options.cs" caret="3308" fromTop="30" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Options.cs" caret="3308" fromTop="13" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Options.cs" caret="3308" fromTop="15" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Options.cs" caret="3308" fromTop="20" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Options.cs" caret="3308" fromTop="25" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Options.cs" caret="3308" fromTop="30" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Options.cs" caret="3308" fromTop="18" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Form1.cs" caret="13607" fromTop="15" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Form1.cs" caret="13607" fromTop="15" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Form1.cs" caret="13607" fromTop="20" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Form1.cs" caret="13607" fromTop="22" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Form1.cs" caret="13607" fromTop="18" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Form1.cs" caret="13607" fromTop="9" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Form1.cs" caret="13607" fromTop="14" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Form1.cs" caret="13607" fromTop="16" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Form1.cs" caret="13607" fromTop="6" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Form1.cs" caret="13607" fromTop="0" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Options.cs" caret="3308" fromTop="17" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Options.cs" caret="3308" fromTop="17" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Form1.cs" caret="13607" fromTop="5" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Form1.cs" caret="13607" fromTop="28" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Program.cs" caret="457" fromTop="16" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Form1.cs" caret="13607" fromTop="16" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Block.cs" caret="6332" fromTop="23" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Form1.cs" caret="13607" fromTop="22" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Form1.cs" caret="13037" fromTop="22" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Options.cs" caret="2387" fromTop="16" />
+      <File id="3B26A33B-95EC-4E94-8A35-6F753D256763/f:Wall.cs" caret="358" fromTop="15" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir IsNull="False">
+    </NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="Wall`0" priority="3" />
+      <Item value="new" priority="16" />
+      <Item value="Wall" priority="1" />
+      <Item value="ctor" priority="0" />
+      <Item value="Block`0" priority="12" />
+      <Item value="bool" priority="4" />
+      <Item value="this" priority="12" />
+      <Item value="a" priority="1" />
+      <Item value="b" priority="1" />
+      <Item value="present" priority="0" />
+      <Item value="_maze" priority="21" />
+      <Item value="x" priority="14" />
+      <Item value="w" priority="2" />
+      <Item value="walls" priority="11" />
+      <Item value="var" priority="0" />
+      <Item value="List" priority="1" />
+      <Item value="true" priority="8" />
+      <Item value="Random`0" priority="0" />
+      <Item value="Random" priority="0" />
+      <Item value="while" priority="3" />
+      <Item value="int" priority="18" />
+      <Item value="rnd" priority="1" />
+      <Item value="KeyValuePair" priority="0" />
+      <Item value="KeyValuePair&lt;Wall,Block&gt;" priority="1" />
+      <Item value="if" priority="29" />
+      <Item value="return" priority="6" />
+      <Item value="else" priority="4" />
+      <Item value="wallId" priority="1" />
+      <Item value="false" priority="6" />
+      <Item value="newBlock" priority="0" />
+      <Item value="startBlock" priority="3" />
+      <Item value="width" priority="5" />
+      <Item value="public" priority="7" />
+      <Item value="enum" priority="0" />
+      <Item value="state`0" priority="1" />
+      <Item value="unvisited" priority="1" />
+      <Item value="currentState" priority="3" />
+      <Item value="e" priority="8" />
+      <Item value="fillColor" priority="2" />
+      <Item value="current" priority="0" />
+      <Item value="Brushes`0" priority="6" />
+      <Item value="private" priority="9" />
+      <Item value="null" priority="3" />
+      <Item value="currentBlock" priority="11" />
+      <Item value="Up" priority="0" />
+      <Item value="switch" priority="0" />
+      <Item value="IFeatureSupport`0" priority="1" />
+      <Item value="Keys`0" priority="0" />
+      <Item value="Visited" priority="2" />
+      <Item value="Current" priority="1" />
+      <Item value="mbox" priority="2" />
+      <Item value="PreviewKeyDownEventArgs`0" priority="0" />
+      <Item value="PreviewKeyDown" priority="0" />
+      <Item value="Form1_KeyDown`0" priority="1" />
+      <Item value="_exitBlock" priority="4" />
+      <Item value="height" priority="3" />
+      <Item value="Unvisited" priority="1" />
+      <Item value="generateMaze`0" priority="0" />
+      <Item value="panel1" priority="4" />
+      <Item value="ToolStripButton`0" priority="0" />
+      <Item value="sender" priority="2" />
+      <Item value="foreach" priority="1" />
+      <Item value="block" priority="4" />
+      <Item value="continue" priority="1" />
+      <Item value="wTop" priority="1" />
+      <Item value="count" priority="5" />
+      <Item value="wBottom" priority="0" />
+      <Item value="wLeft" priority="0" />
+      <Item value="wRight" priority="0" />
+      <Item value="changed" priority="1" />
+      <Item value="for" priority="4" />
+      <Item value="Width" priority="1" />
+      <Item value="_width" priority="4" />
+      <Item value="_height" priority="3" />
+      <Item value="solveMaze`0" priority="0" />
+      <Item value="Exit" priority="0" />
+      <Item value="inMaze" priority="0" />
+      <Item value="_currentState" priority="3" />
+      <Item value="State`0" priority="1" />
+      <Item value="value" priority="0" />
+      <Item value="toolStripButton2" priority="0" />
+      <Item value="Brush`0" priority="3" />
+      <Item value="revealMaze" priority="1" />
+      <Item value="revealColor" priority="1" />
+      <Item value="cornerSize" priority="0" />
+      <Item value="Size`0" priority="0" />
+      <Item value="Height" priority="0" />
+      <Item value="YesNoCancel" priority="0" />
+      <Item value="maze" priority="2" />
+      <Item value="lock" priority="1" />
+      <Item value="object" priority="0" />
+      <Item value="regenerationThread" priority="3" />
+      <Item value="resolution" priority="3" />
+      <Item value="label2" priority="1" />
+      <Item value="progressBar1" priority="4" />
+      <Item value="ProgressBarStyle`0" priority="2" />
+      <Item value="ThreadExceptionDialog`0" priority="0" />
+      <Item value="Thread" priority="0" />
+      <Item value="ParameterizedThreadStart`0" priority="0" />
+      <Item value="ParameterizedThreadStart" priority="1" />
+      <Item value="regenerationThread_DoWork`0" priority="1" />
+      <Item value="pts" priority="0" />
+      <Item value="struct" priority="0" />
+      <Item value="ThreadStartData`0" priority="1" />
+      <Item value="data" priority="5" />
+      <Item value="ThreadStart`0" priority="0" />
+      <Item value="ThreadStartData" priority="0" />
+      <Item value="tsd" priority="0" />
+      <Item value="System" priority="1" />
+      <Item value="Threading" priority="0" />
+      <Item value="Thread`0" priority="3" />
+      <Item value="_mazeLock" priority="0" />
+      <Item value="startData" priority="0" />
+      <Item value="Lowest" priority="0" />
+      <Item value="Panel`0" priority="0" />
+      <Item value="mazePanel" priority="4" />
+      <Item value="Panel" priority="1" />
+      <Item value="Fill" priority="0" />
+      <Item value="void" priority="0" />
+      <Item value="string" priority="1" />
+      <Item value="delegate" priority="0" />
+      <Item value="UpdateDataDelegate`0" priority="0" />
+      <Item value="UpdateDataDelegate" priority="0" />
+      <Item value="udd" priority="0" />
+      <Item value="message" priority="2" />
+      <Item value="percent" priority="6" />
+      <Item value="updateData`0" priority="3" />
+      <Item value="panel2" priority="0" />
+      <Item value="event" priority="0" />
+      <Item value="EventHandler`0" priority="1" />
+      <Item value="GenerationComplete" priority="1" />
+      <Item value="EventArgs" priority="0" />
+      <Item value="EventHandler" priority="0" />
+      <Item value="form1GenerationComplete`0" priority="0" />
+      <Item value="WindowState" priority="0" />
+      <Item value="_regenerationThread" priority="0" />
+      <Item value="maxWalls" priority="1" />
+      <Item value="useMax" priority="0" />
+      <Item value="Application`0" priority="0" />
+      <Item value="ApplicationIdentity`0" priority="0" />
+      <Item value="Properties" priority="5" />
+      <Item value="Settings`0" priority="6" />
+      <Item value="randommaximum" priority="0" />
+      <Item value="Options`0" priority="0" />
+      <Item value="block1" priority="1" />
+      <Item value="block2" priority="0" />
+      <Item value="exitColor" priority="0" />
+      <Item value="currentColor" priority="0" />
+      <Item value="visitedColor" priority="0" />
+      <Item value="SolidBrush`0" priority="0" />
+      <Item value="Button`0" priority="1" />
+      <Item value="mSender" priority="0" />
+      <Item value="ColorDepth`0" priority="0" />
+      <Item value="DialogResult`0" priority="0" />
+      <Item value="MS" priority="0" />
+      <Item value="colorDialog1" priority="0" />
+      <Item value="groupBox3" priority="0" />
+      <Item value="Select`0" priority="0" />
+      <Item value="case" priority="4" />
+      <Item value="break" priority="1" />
+      <Item value="default" priority="0" />
+      <Item value="radioButton1" priority="0" />
+      <Item value="currentResolution" priority="6" />
+      <Item value="currentResolutionX" priority="1" />
+      <Item value="currentResolutionY" priority="1" />
+      <Item value="y" priority="0" />
+      <Item value="AboutBox1`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:BeebMaze.Wall">
+      <Item value="b" priority="0" />
+      <Item value="present" priority="5" />
+      <Item value="getOpposite`0" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:BeebMaze.Block">
+      <Item value="wRight" priority="1" />
+      <Item value="wLeft" priority="4" />
+      <Item value="wBottom" priority="1" />
+      <Item value="wTop" priority="3" />
+      <Item value="inMaze" priority="5" />
+      <Item value="currentState" priority="7" />
+      <Item value="exitBottom" priority="1" />
+      <Item value="PreviewKeyDown" priority="0" />
+      <Item value="Invalidate`0" priority="2" />
+      <Item value="countWalls`0" priority="0" />
+      <Item value="isExit" priority="0" />
+      <Item value="revealMaze" priority="0" />
+      <Item value="Width" priority="1" />
+      <Item value="Height" priority="0" />
+      <Item value="Left" priority="0" />
+      <Item value="Top" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.ArrayList">
+      <Item value="Add`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.List`1">
+      <Item value="Add`0" priority="2" />
+      <Item value="Count" priority="7" />
+      <Item value="RemoveAt`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Random">
+      <Item value="Next`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.KeyValuePair`2">
+      <Item value="Key" priority="0" />
+      <Item value="Value" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.PaintEventArgs">
+      <Item value="Graphics" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Drawing.Graphics">
+      <Item value="DrawRectangle`0" priority="0" />
+      <Item value="FillRectangle`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Drawing.Brushes">
+      <Item value="Green" priority="1" />
+      <Item value="Gray" priority="3" />
+      <Item value="Black" priority="1" />
+      <Item value="LightBlue" priority="0" />
+      <Item value="LightGray" priority="0" />
+      <Item value="DarkGray" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@BeebMaze.Block+state">
+      <Item value="visited" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@BeebMaze.Block">
+      <Item value="State`0" priority="0" />
+      <Item value="fillColor" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@BeebMaze.Block+State">
+      <Item value="Current" priority="1" />
+      <Item value="Exit" priority="0" />
+      <Item value="Visited" priority="0" />
+      <Item value="Unvisited" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.KeyPressEventArgs">
+      <Item value="KeyChar" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.KeyEventArgs">
+      <Item value="KeyCode" priority="1" />
+      <Item value="Handled" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Forms.Keys">
+      <Item value="Down" priority="0" />
+      <Item value="D" priority="0" />
+      <Item value="Up" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:BeebMaze.Form1">
+      <Item value="Invalidate`0" priority="0" />
+      <Item value="InvokeRequired" priority="1" />
+      <Item value="Invoke`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.Panel">
+      <Item value="Controls" priority="1" />
+      <Item value="Visible" priority="0" />
+      <Item value="Dock" priority="0" />
+      <Item value="Invalidate`0" priority="1" />
+      <Item value="Width" priority="0" />
+      <Item value="Handle" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.Control+ControlCollection">
+      <Item value="Clear`0" priority="0" />
+      <Item value="Add`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ToolStripButton">
+      <Item value="Checked" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.ComponentModel.BackgroundWorker">
+      <Item value="RunWorkerAsync`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.ComponentModel.DoWorkEventArgs">
+      <Item value="Argument" priority="0" />
+      <Item value="Result" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.ComponentModel.RunWorkerCompletedEventArgs">
+      <Item value="Result" priority="0" />
+      <Item value="UserState" priority="0" />
+      <Item value="Cancelled" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.Label">
+      <Item value="Text" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ProgressBar">
+      <Item value="Value" priority="1" />
+      <Item value="Style" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Forms.ProgressBarStyle">
+      <Item value="Continuous" priority="1" />
+      <Item value="Marquee" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Threading.Thread">
+      <Item value="Start`0" priority="0" />
+      <Item value="ThreadState" priority="0" />
+      <Item value="Priority" priority="0" />
+      <Item value="Abort`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:BeebMaze.Form1+ThreadStartData">
+      <Item value="resolution" priority="0" />
+      <Item value="width" priority="0" />
+      <Item value="height" priority="0" />
+      <Item value="useMax" priority="1" />
+      <Item value="randommaximum" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Threading.Thread">
+      <Item value="Sleep`0" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:BeebMaze.Options">
+      <Item value="Close`0" priority="1" />
+      <Item value="ShowDialog`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@BeebMaze.Properties.Settings">
+      <Item value="Default" priority="5" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:BeebMaze.Properties.Settings">
+      <Item value="PrimsRandomUseMax" priority="0" />
+      <Item value="PrimsRandomMaximum" priority="0" />
+      <Item value="ColorWalls" priority="0" />
+      <Item value="ColorUnvisitedBlock" priority="0" />
+      <Item value="ColorVisitedBlock" priority="0" />
+      <Item value="ColorDoors" priority="0" />
+      <Item value="ColorExitBlock" priority="0" />
+      <Item value="ColorCurrentBlock" priority="0" />
+      <Item value="ColorIncorrectBlock" priority="0" />
+      <Item value="MazeSize" priority="1" />
+      <Item value="Reset`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.Button">
+      <Item value="BindingContext" priority="0" />
+      <Item value="BackColor" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ColorDialog">
+      <Item value="ShowDialog`0" priority="0" />
+      <Item value="Color" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Forms.DialogResult">
+      <Item value="OK" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.GroupBox">
+      <Item value="Invalidate`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.RadioButton">
+      <Item value="Checked" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:BeebMaze.AboutBox1">
+      <Item value="ShowDialog`0" priority="0" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+</Configuration>
