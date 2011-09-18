@@ -11,9 +11,9 @@ namespace BeebMaze
         private readonly object _mazeLock = new object();
         private int _currentResolution;
 
-        private Block _exitBlock;
+        private BlockControl _exitBlock;
         private int _height;
-        private Block[,] _maze;
+        private BlockControl[,] _maze;
         private Panel _mazePanel;
 
         private Thread _regenerationThread;
@@ -24,7 +24,7 @@ namespace BeebMaze
             InitializeComponent();
         }
 
-        private Block currentBlock { get; set; }
+        private BlockControl currentBlock { get; set; }
 
         private void form1Load(object sender, EventArgs e)
         {
@@ -83,37 +83,37 @@ namespace BeebMaze
         {
             if (e.KeyCode == Keys.Down && currentBlock.exitBottom)
             {
-                currentBlock.currentState = Block.State.Visited;
+                currentBlock.currentState = BlockControl.State.Visited;
                 currentBlock.Invalidate();
                 currentBlock = currentBlock.wBottom.getOpposite(currentBlock);
-                currentBlock.currentState = Block.State.Current;
+                currentBlock.currentState = BlockControl.State.Current;
                 currentBlock.Invalidate();
             }
 
             if (e.KeyCode == Keys.Up && currentBlock.exitTop)
             {
-                currentBlock.currentState = Block.State.Visited;
+                currentBlock.currentState = BlockControl.State.Visited;
                 currentBlock.Invalidate();
                 currentBlock = currentBlock.wTop.getOpposite(currentBlock);
-                currentBlock.currentState = Block.State.Current;
+                currentBlock.currentState = BlockControl.State.Current;
                 currentBlock.Invalidate();
             }
 
             if (e.KeyCode == Keys.Left && currentBlock.exitLeft)
             {
-                currentBlock.currentState = Block.State.Visited;
+                currentBlock.currentState = BlockControl.State.Visited;
                 currentBlock.Invalidate();
                 currentBlock = currentBlock.wLeft.getOpposite(currentBlock);
-                currentBlock.currentState = Block.State.Current;
+                currentBlock.currentState = BlockControl.State.Current;
                 currentBlock.Invalidate();
             }
 
             if (e.KeyCode == Keys.Right && currentBlock.exitRight)
             {
-                currentBlock.currentState = Block.State.Visited;
+                currentBlock.currentState = BlockControl.State.Visited;
                 currentBlock.Invalidate();
                 currentBlock = currentBlock.wRight.getOpposite(currentBlock);
-                currentBlock.currentState = Block.State.Current;
+                currentBlock.currentState = BlockControl.State.Current;
                 currentBlock.Invalidate();
             }
 
@@ -132,7 +132,7 @@ namespace BeebMaze
                 {
                     for (int y = 0; y < _height; y++)
                     {
-                        Block block = _maze[x, y];
+                        BlockControl block = _maze[x, y];
 
                         block.revealMaze = true;
 
@@ -152,7 +152,7 @@ namespace BeebMaze
                 {
                     if (_maze[x, y].inMaze)
                     {
-                        _maze[x, y].currentState = Block.State.Current;
+                        _maze[x, y].currentState = BlockControl.State.Current;
                         _maze[x, y].Invalidate();
                     }
                     else
@@ -184,7 +184,7 @@ namespace BeebMaze
 
             _mazePanel = new Panel();
 
-            var maze = new Block[width,height];
+            var maze = new BlockControl[width,height];
 
             updateData("Generating blocks...");
 
@@ -193,7 +193,7 @@ namespace BeebMaze
                 updateData(percent: x/width);
                 for (int y = 0; y < height; y++)
                 {
-                    maze[x, y] = new Block
+                    maze[x, y] = new BlockControl
                                      {
                                          Left = x*resolution,
                                          Top = y*resolution,
@@ -227,21 +227,21 @@ namespace BeebMaze
 
             // using 0,0 as initial maze block
 
-            var walls = new List<KeyValuePair<Wall, Block>>();
+            var walls = new List<KeyValuePair<Wall, BlockControl>>();
 
-            Block startBlock = maze[0, 0];
+            BlockControl startBlock = maze[0, 0];
 
             startBlock.inMaze = true;
             startBlock.isExit = true;
 
             if (startBlock.wTop != null)
-                walls.Add(new KeyValuePair<Wall, Block>(startBlock.wTop, startBlock));
+                walls.Add(new KeyValuePair<Wall, BlockControl>(startBlock.wTop, startBlock));
             if (startBlock.wRight != null)
-                walls.Add(new KeyValuePair<Wall, Block>(startBlock.wRight, startBlock));
+                walls.Add(new KeyValuePair<Wall, BlockControl>(startBlock.wRight, startBlock));
             if (startBlock.wBottom != null)
-                walls.Add(new KeyValuePair<Wall, Block>(startBlock.wBottom, startBlock));
+                walls.Add(new KeyValuePair<Wall, BlockControl>(startBlock.wBottom, startBlock));
             if (startBlock.wLeft != null)
-                walls.Add(new KeyValuePair<Wall, Block>(startBlock.wLeft, startBlock));
+                walls.Add(new KeyValuePair<Wall, BlockControl>(startBlock.wLeft, startBlock));
 
             var rnd = new Random();
 
@@ -258,7 +258,7 @@ namespace BeebMaze
                                           ? walls.Count
                                           : (walls.Count > data.randommaximum ? data.randommaximum : walls.Count));
 
-                Block newBlock = walls[wallId].Key.getOpposite(walls[wallId].Value);
+                BlockControl newBlock = walls[wallId].Key.getOpposite(walls[wallId].Value);
 
                 if (!newBlock.inMaze)
                 {
@@ -268,13 +268,13 @@ namespace BeebMaze
 
                     // Add the neighboring walls of the cell to the wall list.
                     if (newBlock.wLeft != null)
-                        walls.Add(new KeyValuePair<Wall, Block>(newBlock.wLeft, newBlock));
+                        walls.Add(new KeyValuePair<Wall, BlockControl>(newBlock.wLeft, newBlock));
                     if (newBlock.wRight != null)
-                        walls.Add(new KeyValuePair<Wall, Block>(newBlock.wRight, newBlock));
+                        walls.Add(new KeyValuePair<Wall, BlockControl>(newBlock.wRight, newBlock));
                     if (newBlock.wTop != null)
-                        walls.Add(new KeyValuePair<Wall, Block>(newBlock.wTop, newBlock));
+                        walls.Add(new KeyValuePair<Wall, BlockControl>(newBlock.wTop, newBlock));
                     if (newBlock.wBottom != null)
-                        walls.Add(new KeyValuePair<Wall, Block>(newBlock.wBottom, newBlock));
+                        walls.Add(new KeyValuePair<Wall, BlockControl>(newBlock.wBottom, newBlock));
                 }
 
                 walls.RemoveAt(wallId);
@@ -283,10 +283,10 @@ namespace BeebMaze
 
             _exitBlock = maze[width - 1, height - 1];
             _exitBlock.isExit = true;
-            _exitBlock.currentState = Block.State.Exit;
+            _exitBlock.currentState = BlockControl.State.Exit;
 
             currentBlock = startBlock;
-            currentBlock.currentState = Block.State.Current;
+            currentBlock.currentState = BlockControl.State.Current;
 
             lock (_mazeLock)
             {

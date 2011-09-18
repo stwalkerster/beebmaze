@@ -91,11 +91,11 @@
     <Compile Include="AboutBox1.Designer.cs">
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Block.cs">
+    <Compile Include="BlockControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Block.Designer.cs">
-      <DependentUpon>Block.cs</DependentUpon>
+    <Compile Include="BlockControl.Designer.cs">
+      <DependentUpon>BlockControl.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -115,8 +115,8 @@
     <EmbeddedResource Include="AboutBox1.resx">
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Block.resx">
-      <DependentUpon>Block.cs</DependentUpon>
+    <EmbeddedResource Include="BlockControl.resx">
+      <DependentUpon>BlockControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

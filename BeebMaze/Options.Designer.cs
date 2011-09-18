@@ -55,14 +55,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.block5 = new BeebMaze.Block();
-            this.block6 = new BeebMaze.Block();
-            this.block7 = new BeebMaze.Block();
-            this.block8 = new BeebMaze.Block();
-            this.block4 = new BeebMaze.Block();
-            this.block3 = new BeebMaze.Block();
-            this.block2 = new BeebMaze.Block();
-            this.block1 = new BeebMaze.Block();
+            this.block5 = new BeebMaze.BlockControl();
+            this.block6 = new BeebMaze.BlockControl();
+            this.block7 = new BeebMaze.BlockControl();
+            this.block8 = new BeebMaze.BlockControl();
+            this.block4 = new BeebMaze.BlockControl();
+            this.block3 = new BeebMaze.BlockControl();
+            this.block2 = new BeebMaze.BlockControl();
+            this.block1 = new BeebMaze.BlockControl();
             this.button2 = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
@@ -385,7 +385,7 @@
             // 
             // block5
             // 
-            this.block5.currentState = BeebMaze.Block.State.Unvisited;
+            this.block5.currentState = BeebMaze.BlockControl.State.Unvisited;
             this.block5.inMaze = false;
             this.block5.Location = new System.Drawing.Point(301, 104);
             this.block5.Name = "block5";
@@ -399,7 +399,7 @@
             // 
             // block6
             // 
-            this.block6.currentState = BeebMaze.Block.State.Exit;
+            this.block6.currentState = BeebMaze.BlockControl.State.Exit;
             this.block6.inMaze = false;
             this.block6.Location = new System.Drawing.Point(278, 104);
             this.block6.Name = "block6";
@@ -413,7 +413,7 @@
             // 
             // block7
             // 
-            this.block7.currentState = BeebMaze.Block.State.Current;
+            this.block7.currentState = BeebMaze.BlockControl.State.Current;
             this.block7.inMaze = false;
             this.block7.Location = new System.Drawing.Point(301, 80);
             this.block7.Name = "block7";
@@ -427,7 +427,7 @@
             // 
             // block8
             // 
-            this.block8.currentState = BeebMaze.Block.State.Visited;
+            this.block8.currentState = BeebMaze.BlockControl.State.Visited;
             this.block8.inMaze = false;
             this.block8.Location = new System.Drawing.Point(278, 80);
             this.block8.Name = "block8";
@@ -441,7 +441,7 @@
             // 
             // block4
             // 
-            this.block4.currentState = BeebMaze.Block.State.Unvisited;
+            this.block4.currentState = BeebMaze.BlockControl.State.Unvisited;
             this.block4.inMaze = true;
             this.block4.Location = new System.Drawing.Point(302, 34);
             this.block4.Name = "block4";
@@ -455,7 +455,7 @@
             // 
             // block3
             // 
-            this.block3.currentState = BeebMaze.Block.State.Exit;
+            this.block3.currentState = BeebMaze.BlockControl.State.Exit;
             this.block3.inMaze = true;
             this.block3.Location = new System.Drawing.Point(278, 34);
             this.block3.Name = "block3";
@@ -469,7 +469,7 @@
             // 
             // block2
             // 
-            this.block2.currentState = BeebMaze.Block.State.Current;
+            this.block2.currentState = BeebMaze.BlockControl.State.Current;
             this.block2.inMaze = true;
             this.block2.Location = new System.Drawing.Point(302, 10);
             this.block2.Name = "block2";
@@ -483,7 +483,7 @@
             // 
             // block1
             // 
-            this.block1.currentState = BeebMaze.Block.State.Visited;
+            this.block1.currentState = BeebMaze.BlockControl.State.Visited;
             this.block1.inMaze = true;
             this.block1.Location = new System.Drawing.Point(278, 10);
             this.block1.Name = "block1";
@@ -571,15 +571,15 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
-        private Block block1;
+        private BlockControl block1;
         private System.Windows.Forms.Button button2;
-        private Block block4;
-        private Block block3;
-        private Block block2;
-        private Block block5;
-        private Block block6;
-        private Block block7;
-        private Block block8;
+        private BlockControl block4;
+        private BlockControl block3;
+        private BlockControl block2;
+        private BlockControl block5;
+        private BlockControl block6;
+        private BlockControl block7;
+        private BlockControl block8;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
