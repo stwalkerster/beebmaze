@@ -21,7 +21,13 @@ namespace BeebMaze
 
         private void simpleOpenGlControl1_Load(object sender, EventArgs e)
         {
+            doDraw();
+        }
+
+        private void doDraw()
+        {
             // Clear the window
+
             Gl.glClear(Gl.GL_COLOR_BUFFER_BIT);
 
             // Specify polygon to be drawn and vertices of polygon
@@ -38,12 +44,20 @@ namespace BeebMaze
 
             // Flush the buffer to force drawing of all objects thus far
             Gl.glFlush();
-
-        }   
+        }
 
         ~ol()
         {
             simpleOpenGlControl1.DestroyContexts();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            doDraw();
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
         }
     }
 }
