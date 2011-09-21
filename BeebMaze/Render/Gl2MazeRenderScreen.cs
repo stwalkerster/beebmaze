@@ -12,7 +12,7 @@ namespace BeebMaze.Render
 {
     public partial class Gl2MazeRenderScreen : GlMazeRenderScreen
     {
-        private const float WIDTH_WALL = 5f,
+        private const float WIDTH_WALL = 2f,
                             WIDTH_CELL = 5f,
                             GL_SIZE = 2f;
 
@@ -61,7 +61,7 @@ namespace BeebMaze.Render
             float point = -1;
             Gl.glBegin(Gl.GL_LINES);
             Gl.glColor3f(1,0,0);
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < rows; i++)
             {
                 Gl.glVertex2f(-1, point);
                 Gl.glVertex2f(1, point);
@@ -74,9 +74,11 @@ namespace BeebMaze.Render
             Gl.glVertex2f(1, point);
             Gl.glEnd();
 
+            point = -1;
+
             Gl.glBegin(Gl.GL_LINES);
             Gl.glColor3f(0, 1, 0);
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < cols; i++)
             {
                 Gl.glVertex2f(point,-1);
                 Gl.glVertex2f(point, 1);
