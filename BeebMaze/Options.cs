@@ -107,5 +107,20 @@ namespace BeebMaze
             Settings.Default.Reset();
             Close();
         }
+
+        private void radioButton6_CheckedChanged(object sender, EventArgs e)
+        {
+            Settings.Default.DisplayDriver = Settings.DISPLAY_DRIVER_NET;
+        }
+
+        private void radioButton7_CheckedChanged(object sender, EventArgs e)
+        {
+            Settings.Default.DisplayDriver = Settings.DISPLAY_DRIVER_GL2;
+        }
+
+        private void radioButton8_CheckedChanged(object sender, EventArgs e)
+        {
+            Settings.Default.DisplayDriver = Settings.DISPLAY_DRIVER_GL3;
+        }
     }
 }

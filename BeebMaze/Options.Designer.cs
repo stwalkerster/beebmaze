@@ -37,21 +37,13 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.button8 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -63,14 +55,27 @@
             this.block3 = new BeebMaze.BlockControl();
             this.block2 = new BeebMaze.BlockControl();
             this.block1 = new BeebMaze.BlockControl();
-            this.button2 = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.button9 = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.radioButton7 = new System.Windows.Forms.RadioButton();
+            this.radioButton8 = new System.Windows.Forms.RadioButton();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -160,7 +165,7 @@
             // button1
             // 
             this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Location = new System.Drawing.Point(488, 180);
+            this.button1.Location = new System.Drawing.Point(483, 235);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 3;
@@ -172,36 +177,12 @@
             // 
             this.groupBox2.Controls.Add(this.numericUpDown1);
             this.groupBox2.Controls.Add(this.checkBox1);
-            this.groupBox2.Location = new System.Drawing.Point(6, 156);
+            this.groupBox2.Location = new System.Drawing.Point(218, 180);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(200, 49);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Algorithm randomness factor";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.DataBindings.Add(new System.Windows.Forms.Binding("ReadOnly", global::BeebMaze.Properties.Settings.Default, "PrimsRandomUseMax", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.numericUpDown1.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::BeebMaze.Properties.Settings.Default, "PrimsRandomMaximum", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.numericUpDown1.Location = new System.Drawing.Point(6, 19);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.ReadOnly = global::BeebMaze.Properties.Settings.Default.PrimsRandomUseMax;
-            this.numericUpDown1.Size = new System.Drawing.Size(81, 20);
-            this.numericUpDown1.TabIndex = 1;
-            this.numericUpDown1.Value = global::BeebMaze.Properties.Settings.Default.PrimsRandomMaximum;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = global::BeebMaze.Properties.Settings.Default.PrimsRandomUseMax;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::BeebMaze.Properties.Settings.Default, "PrimsRandomUseMax", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.checkBox1.Location = new System.Drawing.Point(93, 20);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(91, 17);
-            this.checkBox1.TabIndex = 2;
-            this.checkBox1.Text = "Use maximum";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
@@ -234,7 +215,7 @@
             this.groupBox3.Size = new System.Drawing.Size(345, 162);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "groupBox3";
+            this.groupBox3.Text = "Colours";
             // 
             // label10
             // 
@@ -245,17 +226,6 @@
             this.label10.TabIndex = 25;
             this.label10.Text = "Doors";
             // 
-            // button8
-            // 
-            this.button8.BackColor = global::BeebMaze.Properties.Settings.Default.ColorDoors;
-            this.button8.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::BeebMaze.Properties.Settings.Default, "ColorDoors", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.button8.Location = new System.Drawing.Point(211, 48);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(23, 23);
-            this.button8.TabIndex = 24;
-            this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.button2_Click);
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -264,17 +234,6 @@
             this.label9.Size = new System.Drawing.Size(33, 13);
             this.label9.TabIndex = 23;
             this.label9.Text = "Walls";
-            // 
-            // button7
-            // 
-            this.button7.BackColor = global::BeebMaze.Properties.Settings.Default.ColorWalls;
-            this.button7.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::BeebMaze.Properties.Settings.Default, "ColorWalls", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.button7.Location = new System.Drawing.Point(211, 19);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(23, 23);
-            this.button7.TabIndex = 22;
-            this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.button2_Click);
             // 
             // label8
             // 
@@ -285,17 +244,6 @@
             this.label8.TabIndex = 21;
             this.label8.Text = "Incorrect Block";
             // 
-            // button6
-            // 
-            this.button6.BackColor = global::BeebMaze.Properties.Settings.Default.ColorIncorrectBlock;
-            this.button6.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::BeebMaze.Properties.Settings.Default, "ColorIncorrectBlock", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.button6.Location = new System.Drawing.Point(94, 133);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(23, 23);
-            this.button6.TabIndex = 20;
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button2_Click);
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -304,17 +252,6 @@
             this.label7.Size = new System.Drawing.Size(81, 13);
             this.label7.TabIndex = 19;
             this.label7.Text = "Unvisited Block";
-            // 
-            // button5
-            // 
-            this.button5.BackColor = global::BeebMaze.Properties.Settings.Default.ColorUnvisitedBlock;
-            this.button5.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::BeebMaze.Properties.Settings.Default, "ColorUnvisitedBlock", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.button5.Location = new System.Drawing.Point(94, 104);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(23, 23);
-            this.button5.TabIndex = 18;
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button2_Click);
             // 
             // label6
             // 
@@ -325,17 +262,6 @@
             this.label6.TabIndex = 17;
             this.label6.Text = "Exit Block";
             // 
-            // button4
-            // 
-            this.button4.BackColor = global::BeebMaze.Properties.Settings.Default.ColorExitBlock;
-            this.button4.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::BeebMaze.Properties.Settings.Default, "ColorExitBlock", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.button4.Location = new System.Drawing.Point(94, 75);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(23, 23);
-            this.button4.TabIndex = 16;
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button2_Click);
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -344,17 +270,6 @@
             this.label5.Size = new System.Drawing.Size(68, 13);
             this.label5.TabIndex = 15;
             this.label5.Text = "Visited Block";
-            // 
-            // button3
-            // 
-            this.button3.BackColor = global::BeebMaze.Properties.Settings.Default.ColorVisitedBlock;
-            this.button3.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::BeebMaze.Properties.Settings.Default, "ColorVisitedBlock", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.button3.Location = new System.Drawing.Point(94, 48);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(23, 23);
-            this.button3.TabIndex = 14;
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button2_Click);
             // 
             // label4
             // 
@@ -495,6 +410,145 @@
             this.block1.wRight = null;
             this.block1.wTop = null;
             // 
+            // button9
+            // 
+            this.button9.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.button9.Location = new System.Drawing.Point(402, 235);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(75, 23);
+            this.button9.TabIndex = 7;
+            this.button9.Text = "Defaults";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.radioButton8);
+            this.groupBox4.Controls.Add(this.radioButton7);
+            this.groupBox4.Controls.Add(this.radioButton6);
+            this.groupBox4.Location = new System.Drawing.Point(12, 156);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(200, 100);
+            this.groupBox4.TabIndex = 8;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Display Driver";
+            // 
+            // radioButton6
+            // 
+            this.radioButton6.AutoSize = true;
+            this.radioButton6.Checked = true;
+            this.radioButton6.Location = new System.Drawing.Point(6, 19);
+            this.radioButton6.Name = "radioButton6";
+            this.radioButton6.Size = new System.Drawing.Size(147, 17);
+            this.radioButton6.TabIndex = 0;
+            this.radioButton6.TabStop = true;
+            this.radioButton6.Text = ".NET Drawing Framework";
+            this.radioButton6.UseVisualStyleBackColor = true;
+            this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton6_CheckedChanged);
+            // 
+            // radioButton7
+            // 
+            this.radioButton7.AutoSize = true;
+            this.radioButton7.Enabled = false;
+            this.radioButton7.Location = new System.Drawing.Point(6, 42);
+            this.radioButton7.Name = "radioButton7";
+            this.radioButton7.Size = new System.Drawing.Size(82, 17);
+            this.radioButton7.TabIndex = 1;
+            this.radioButton7.Text = "2D OpenGL";
+            this.radioButton7.UseVisualStyleBackColor = true;
+            this.radioButton7.CheckedChanged += new System.EventHandler(this.radioButton7_CheckedChanged);
+            // 
+            // radioButton8
+            // 
+            this.radioButton8.AutoSize = true;
+            this.radioButton8.Enabled = false;
+            this.radioButton8.Location = new System.Drawing.Point(6, 65);
+            this.radioButton8.Name = "radioButton8";
+            this.radioButton8.Size = new System.Drawing.Size(82, 17);
+            this.radioButton8.TabIndex = 2;
+            this.radioButton8.Text = "3D OpenGL";
+            this.radioButton8.UseVisualStyleBackColor = true;
+            this.radioButton8.CheckedChanged += new System.EventHandler(this.radioButton8_CheckedChanged);
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Checked = global::BeebMaze.Properties.Settings.Default.RevealMaze;
+            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox2.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::BeebMaze.Properties.Settings.Default, "RevealMaze", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkBox2.Location = new System.Drawing.Point(218, 239);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(89, 17);
+            this.checkBox2.TabIndex = 6;
+            this.checkBox2.Text = "Reveal Maze";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // button8
+            // 
+            this.button8.BackColor = global::BeebMaze.Properties.Settings.Default.ColorDoors;
+            this.button8.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::BeebMaze.Properties.Settings.Default, "ColorDoors", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.button8.Location = new System.Drawing.Point(211, 48);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(23, 23);
+            this.button8.TabIndex = 24;
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button7
+            // 
+            this.button7.BackColor = global::BeebMaze.Properties.Settings.Default.ColorWalls;
+            this.button7.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::BeebMaze.Properties.Settings.Default, "ColorWalls", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.button7.Location = new System.Drawing.Point(211, 19);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(23, 23);
+            this.button7.TabIndex = 22;
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button6
+            // 
+            this.button6.BackColor = global::BeebMaze.Properties.Settings.Default.ColorIncorrectBlock;
+            this.button6.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::BeebMaze.Properties.Settings.Default, "ColorIncorrectBlock", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.button6.Location = new System.Drawing.Point(94, 133);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(23, 23);
+            this.button6.TabIndex = 20;
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button5
+            // 
+            this.button5.BackColor = global::BeebMaze.Properties.Settings.Default.ColorUnvisitedBlock;
+            this.button5.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::BeebMaze.Properties.Settings.Default, "ColorUnvisitedBlock", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.button5.Location = new System.Drawing.Point(94, 104);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(23, 23);
+            this.button5.TabIndex = 18;
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button4
+            // 
+            this.button4.BackColor = global::BeebMaze.Properties.Settings.Default.ColorExitBlock;
+            this.button4.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::BeebMaze.Properties.Settings.Default, "ColorExitBlock", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.button4.Location = new System.Drawing.Point(94, 75);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(23, 23);
+            this.button4.TabIndex = 16;
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = global::BeebMaze.Properties.Settings.Default.ColorVisitedBlock;
+            this.button3.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::BeebMaze.Properties.Settings.Default, "ColorVisitedBlock", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.button3.Location = new System.Drawing.Point(94, 48);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(23, 23);
+            this.button3.TabIndex = 14;
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button2_Click);
+            // 
             // button2
             // 
             this.button2.BackColor = global::BeebMaze.Properties.Settings.Default.ColorCurrentBlock;
@@ -506,36 +560,37 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // checkBox2
+            // numericUpDown1
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Checked = global::BeebMaze.Properties.Settings.Default.RevealMaze;
-            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox2.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::BeebMaze.Properties.Settings.Default, "RevealMaze", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.checkBox2.Location = new System.Drawing.Point(218, 180);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(89, 17);
-            this.checkBox2.TabIndex = 6;
-            this.checkBox2.Text = "Reveal Maze";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.numericUpDown1.DataBindings.Add(new System.Windows.Forms.Binding("ReadOnly", global::BeebMaze.Properties.Settings.Default, "PrimsRandomUseMax", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.numericUpDown1.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::BeebMaze.Properties.Settings.Default, "PrimsRandomMaximum", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.numericUpDown1.Location = new System.Drawing.Point(6, 19);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.ReadOnly = global::BeebMaze.Properties.Settings.Default.PrimsRandomUseMax;
+            this.numericUpDown1.Size = new System.Drawing.Size(81, 20);
+            this.numericUpDown1.TabIndex = 1;
+            this.numericUpDown1.Value = global::BeebMaze.Properties.Settings.Default.PrimsRandomMaximum;
             // 
-            // button9
+            // checkBox1
             // 
-            this.button9.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button9.Location = new System.Drawing.Point(407, 180);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(75, 23);
-            this.button9.TabIndex = 7;
-            this.button9.Text = "Defaults";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = global::BeebMaze.Properties.Settings.Default.PrimsRandomUseMax;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::BeebMaze.Properties.Settings.Default, "PrimsRandomUseMax", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkBox1.Location = new System.Drawing.Point(93, 20);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(91, 17);
+            this.checkBox1.TabIndex = 2;
+            this.checkBox1.Text = "Use maximum";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // Options
             // 
             this.AcceptButton = this.button1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(570, 213);
+            this.ClientSize = new System.Drawing.Size(570, 268);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.groupBox3);
@@ -549,9 +604,11 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -598,5 +655,9 @@
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.RadioButton radioButton8;
+        private System.Windows.Forms.RadioButton radioButton7;
+        private System.Windows.Forms.RadioButton radioButton6;
     }
 }
