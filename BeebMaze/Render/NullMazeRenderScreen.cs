@@ -7,18 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace BeebMaze
+namespace BeebMaze.Render
 {
-    public partial class MazeRenderScreen : Panel
+    public partial class NullMazeRenderScreen : UserControl
     {
-        protected MazeRenderScreen()
+        public NullMazeRenderScreen()
         {
             InitializeComponent();
         }
 
         public virtual void render(Block[,] maze)
         {
-            
+
+        }
+
+        internal static NullMazeRenderScreen Create()
+        {
+            return new NullMazeRenderScreen();
         }
     }
 }

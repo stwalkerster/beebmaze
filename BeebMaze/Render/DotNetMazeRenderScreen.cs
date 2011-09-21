@@ -1,28 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
-using System.Linq;
+using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace BeebMaze
+namespace BeebMaze.Render
 {
-    public partial class DotNetMazeRenderScreen : MazeRenderScreen
+    public partial class DotNetMazeRenderScreen : BeebMaze.Render.NullMazeRenderScreen
     {
         public DotNetMazeRenderScreen()
         {
             InitializeComponent();
         }
-
-        #region Overrides of MazeRenderScreen
-
-        public override void render(Block[,] maze)
-        {
-
-        }
-
-        #endregion
     }
 }

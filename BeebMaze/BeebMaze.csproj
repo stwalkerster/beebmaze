@@ -92,23 +92,11 @@
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </Compile>
     <Compile Include="Block.cs" />
-    <Compile Include="DotNetMazeRenderScreen.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="DotNetMazeRenderScreen.Designer.cs">
-      <DependentUpon>DotNetMazeRenderScreen.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MazeRenderScreen.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="MazeRenderScreen.Designer.cs">
-      <DependentUpon>MazeRenderScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Options.cs">
       <SubType>Form</SubType>
@@ -118,6 +106,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Render\DotNetMazeRenderScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Render\DotNetMazeRenderScreen.Designer.cs">
+      <DependentUpon>DotNetMazeRenderScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Render\NullMazeRenderScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Render\NullMazeRenderScreen.Designer.cs">
+      <DependentUpon>NullMazeRenderScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="Wall.cs" />
     <EmbeddedResource Include="AboutBox1.resx">
@@ -138,6 +138,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Render\DotNetMazeRenderScreen.resx">
+      <DependentUpon>DotNetMazeRenderScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="BeebMaze_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">

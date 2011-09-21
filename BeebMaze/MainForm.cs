@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Forms;
 using BeebMaze.Properties;
+using BeebMaze.Render;
 
 namespace BeebMaze
 {
@@ -13,7 +14,7 @@ namespace BeebMaze
         private Block _exitBlock;
         private int _height;
         private Block[,] _maze;
-        private MazeRenderScreen _mazePanel;
+        private NullMazeRenderScreen _mazePanel;
 
         private Thread _regenerationThread;
         private int _width;
@@ -183,7 +184,7 @@ namespace BeebMaze
             int width = data.width;
             int height = data.height;
 
-            _mazePanel = new DotNetMazeRenderScreen();
+            _mazePanel = NullMazeRenderScreen.Create();
 
             var maze = new Block[width,height];
 
