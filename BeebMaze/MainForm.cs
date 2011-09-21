@@ -6,7 +6,7 @@ using BeebMaze.Properties;
 
 namespace BeebMaze
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         private readonly object _mazeLock = new object();
         private int _currentResolution;
@@ -19,7 +19,7 @@ namespace BeebMaze
         private Thread _regenerationThread;
         private int _width;
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
