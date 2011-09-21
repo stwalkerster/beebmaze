@@ -122,9 +122,12 @@ namespace BeebMaze
 
         private void performRender()
         {
-            if(_mazePanel.GetType() != MazeRenderScreen.whatAmI(lastRenderType))
+            if(_mazePanel.GetType() != MazeRenderScreen.whatAmI(Settings.Default.DisplayDriver))
             {
+                panel1.Controls.Clear();
                 _mazePanel = MazeRenderScreen.Create();
+                _mazePanel.Dock = DockStyle.Fill;
+                panel1.Controls.Add(_mazePanel);
             }
 
             lock (_mazeLock)

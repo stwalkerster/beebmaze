@@ -17,7 +17,7 @@ namespace BeebMaze.Render
             InitializeComponent();
         }
 
-        private Block[,] lastKnownMaze;
+        protected Block[,] lastKnownMaze;
 
         public virtual void render(Block[,] maze)
         {
@@ -48,7 +48,7 @@ namespace BeebMaze.Render
 
         private void MazeRenderScreen_Paint(object sender, PaintEventArgs e)
         {
-            render(lastKnownMaze);
+                render(lastKnownMaze);
         }
 
         internal static Type whatAmI(int identifier)

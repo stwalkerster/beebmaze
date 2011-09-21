@@ -19,6 +19,14 @@ namespace BeebMaze.Render
         {
             base.render(maze);
 
+            if (maze == null)
+                maze = lastKnownMaze;
+            if (maze == null)
+                maze = new Block[0, 0];
+
+            if (maze.Length != 0)
+                lastKnownMaze = maze;
+
             statX.Text = maze.GetLength(0).ToString();
             statY.Text = maze.GetLength(1).ToString();
             statRendered.Text = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
