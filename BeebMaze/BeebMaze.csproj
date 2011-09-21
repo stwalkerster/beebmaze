@@ -103,6 +103,12 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MazeRenderScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MazeRenderScreen.Designer.cs">
+      <DependentUpon>MazeRenderScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Options.cs">
       <SubType>Form</SubType>
     </Compile>
