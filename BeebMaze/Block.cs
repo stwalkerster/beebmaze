@@ -7,7 +7,7 @@ namespace BeebMaze
 {
     public class Block
     {
-              public enum State
+        public enum State
         {
             Unvisited,
             Current,
@@ -106,9 +106,5 @@ namespace BeebMaze
 
   
         public int positionX, positionY;
-
-        public Block()
-        {
-        }
     }
 }

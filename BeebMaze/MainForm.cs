@@ -80,41 +80,49 @@ namespace BeebMaze
             if (e.KeyCode == Keys.Down && currentBlock.exitBottom)
             {
                 currentBlock.currentState = Block.State.Visited;
-                _mazePanel.render();
+                performRender();
                 currentBlock = currentBlock.wBottom.getOpposite(currentBlock);
                 currentBlock.currentState = Block.State.Current;
-                _mazePanel.render();
+                performRender();
             }
 
             if (e.KeyCode == Keys.Up && currentBlock.exitTop)
             {
                 currentBlock.currentState = Block.State.Visited;
-                _mazePanel.render();
+                performRender();
                 currentBlock = currentBlock.wTop.getOpposite(currentBlock);
                 currentBlock.currentState = Block.State.Current;
-                _mazePanel.render();
+                performRender();
             }
 
             if (e.KeyCode == Keys.Left && currentBlock.exitLeft)
             {
                 currentBlock.currentState = Block.State.Visited;
-                _mazePanel.render();
+                performRender();
                 currentBlock = currentBlock.wLeft.getOpposite(currentBlock);
                 currentBlock.currentState = Block.State.Current;
-                _mazePanel.render();
+                performRender();
             }
 
             if (e.KeyCode == Keys.Right && currentBlock.exitRight)
             {
                 currentBlock.currentState = Block.State.Visited;
-                _mazePanel.render();
+                performRender();
                 currentBlock = currentBlock.wRight.getOpposite(currentBlock);
                 currentBlock.currentState = Block.State.Current;
-                _mazePanel.render();
+                performRender();
             }
 
             if (currentBlock == _exitBlock)
                 solveMaze();
+        }
+
+        private void performRender()
+        {
+            lock (_mazeLock)
+            {
+                _mazePanel.render(_maze);
+            }
         }
 
         private void solveMaze()
@@ -147,12 +155,12 @@ namespace BeebMaze
                     if (_maze[x, y].inMaze)
                     {
                         _maze[x, y].currentState = Block.State.Current;
-                        _mazePanel.render();
+                        performRender();
                     }
                     else
                     {
                         //if(_maze[x,y].currentState == Block.State.Visited)
-                        _mazePanel.render();
+                        performRender();
                     }
                 }
             }
@@ -322,12 +330,12 @@ namespace BeebMaze
 
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
-            _mazePanel.render();
+            performRender();
         }
 
         private void form1Resize(object sender, EventArgs e)
         {
-            _mazePanel.render();
+            performRender();
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)

@@ -9,13 +9,16 @@ using System.Windows.Forms;
 
 namespace BeebMaze
 {
-    public abstract partial class MazeRenderScreen : Panel
+    public partial class MazeRenderScreen : Panel
     {
         protected MazeRenderScreen()
         {
             InitializeComponent();
         }
 
-        public abstract void render();
+        public virtual void render(Block[,] maze)
+        {
+            
+        }
     }
 }

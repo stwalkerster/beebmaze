@@ -18,9 +18,9 @@ namespace BeebMaze
 
         #region Overrides of MazeRenderScreen
 
-        public override void render()
+        public override void render(Block[,] maze)
         {
-            throw new NotImplementedException();
+
         }
 
         #endregion
