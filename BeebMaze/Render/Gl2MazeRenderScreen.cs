@@ -12,8 +12,9 @@ namespace BeebMaze.Render
 {
     public partial class Gl2MazeRenderScreen : GlMazeRenderScreen
     {
-        private const int WIDTH_WALL = 5,
-                          WIDTH_CELL = 5;
+        private const float WIDTH_WALL = 5f,
+                            WIDTH_CELL = 5f,
+                            GL_SIZE = 2f;
 
         private Block[,] maze = new Block[0,0];
 
@@ -48,19 +49,68 @@ namespace BeebMaze.Render
             Gl.glLoadIdentity();
 
             // draw a polygon for the wall corners
+            //drawQuad(0.1f);
+
+            int cols = 10;
+            int rows = 30;
+
+            //work out how much we have to scale this model by
+            float xscalingfactor = getScalingFactor(cols),
+                  yscalingfactor = getScalingFactor(rows);
+
+            float point = -1;
+            Gl.glBegin(Gl.GL_LINES);
+            Gl.glColor3f(1,0,0);
+            for (int i = 0; i < 10; i++)
+            {
+                Gl.glVertex2f(-1, point);
+                Gl.glVertex2f(1, point);
+                point += (WIDTH_WALL*yscalingfactor);
+                Gl.glVertex2f(-1, point);
+                Gl.glVertex2f(1, point);
+                point += (WIDTH_CELL * yscalingfactor);
+            }
+            Gl.glVertex2f(-1, point);
+            Gl.glVertex2f(1, point);
+            Gl.glEnd();
+
+            Gl.glBegin(Gl.GL_LINES);
+            Gl.glColor3f(0, 1, 0);
+            for (int i = 0; i < 20; i++)
+            {
+                Gl.glVertex2f(point,-1);
+                Gl.glVertex2f(point, 1);
+                point += (WIDTH_WALL * xscalingfactor);
+                Gl.glVertex2f(point, -1);
+                Gl.glVertex2f(point, 1);
+                point += (WIDTH_CELL * xscalingfactor);
+            }
+            Gl.glVertex2f(point, -1);
+            Gl.glVertex2f(point, 1);
+            Gl.glEnd();
+
+            Gl.glFlush();
+        }
+
+        private float getScalingFactor(int cells)
+        {
+            return GL_SIZE/((WIDTH_WALL*(cells + 1)) + (cells*WIDTH_CELL));
+        }
+
+        void drawQuad(float size)
+        {
+            size = size/2;
+
             Gl.glBegin(Gl.GL_POLYGON);
 
             Gl.glColor3f(1f, 1f, 1f);
 
-            Gl.glVertex2f(-0.2f, 0.2f);
-            Gl.glVertex2f(-0.2f, -0.2f);
-            Gl.glVertex2f(0.2f, -0.2f);
-            Gl.glVertex2f(0.2f, 0.2f);
+            Gl.glVertex2f(-size, size);
+            Gl.glVertex2f(-size, -size);
+            Gl.glVertex2f(size, -size);
+            Gl.glVertex2f(size, size);
 
             Gl.glEnd();
         }
-
-
-
     }
 }
