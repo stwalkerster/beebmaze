@@ -1,29 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
-using System.Linq;
+using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
 namespace BeebMaze.Render
 {
-    public partial class NullMazeRenderScreen : UserControl
+    public partial class NullMazeRenderScreen : BeebMaze.Render.MazeRenderScreen
     {
         public NullMazeRenderScreen()
         {
             InitializeComponent();
         }
 
-        public virtual void render(Block[,] maze)
+        public override void render(Block[,] maze)
         {
+            base.render(maze);
 
-        }
-
-        internal static NullMazeRenderScreen Create()
-        {
-            return new NullMazeRenderScreen();
+            statX.Text = maze.GetLength(0).ToString();
+            statY.Text = maze.GetLength(1).ToString();
+            statRendered.Text = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
         }
     }
 }

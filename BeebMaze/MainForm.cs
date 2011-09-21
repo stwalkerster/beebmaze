@@ -14,7 +14,7 @@ namespace BeebMaze
         private Block _exitBlock;
         private int _height;
         private Block[,] _maze;
-        private NullMazeRenderScreen _mazePanel;
+        private MazeRenderScreen _mazePanel;
 
         private Thread _regenerationThread;
         private int _width;
@@ -184,7 +184,7 @@ namespace BeebMaze
             int width = data.width;
             int height = data.height;
 
-            _mazePanel = NullMazeRenderScreen.Create();
+            _mazePanel = MazeRenderScreen.Create();
 
             var maze = new Block[width,height];
 

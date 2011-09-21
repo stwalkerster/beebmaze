@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace BeebMaze.Render
 {
-    public partial class DotNetMazeRenderScreen : BeebMaze.Render.NullMazeRenderScreen
+    public partial class DotNetMazeRenderScreen : BeebMaze.Render.MazeRenderScreen
     {
         public DotNetMazeRenderScreen()
         {

@@ -112,6 +112,12 @@
     <Compile Include="Render\DotNetMazeRenderScreen.Designer.cs">
       <DependentUpon>DotNetMazeRenderScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Render\MazeRenderScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Render\MazeRenderScreen.Designer.cs">
+      <DependentUpon>MazeRenderScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Render\NullMazeRenderScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -140,6 +146,12 @@
     </Compile>
     <EmbeddedResource Include="Render\DotNetMazeRenderScreen.resx">
       <DependentUpon>DotNetMazeRenderScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Render\MazeRenderScreen.resx">
+      <DependentUpon>MazeRenderScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Render\NullMazeRenderScreen.resx">
+      <DependentUpon>NullMazeRenderScreen.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="BeebMaze_TemporaryKey.pfx" />
