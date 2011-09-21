@@ -91,6 +91,7 @@
     <Compile Include="AboutBox1.Designer.cs">
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Block.cs" />
     <Compile Include="BlockControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
