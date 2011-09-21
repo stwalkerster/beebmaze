@@ -47,7 +47,7 @@
             this.simpleOpenGlControl1.Size = new System.Drawing.Size(731, 393);
             this.simpleOpenGlControl1.StencilBits = ((byte)(0));
             this.simpleOpenGlControl1.TabIndex = 1;
-            this.simpleOpenGlControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.simpleOpenGlControl1_Paint);
+            this.simpleOpenGlControl1.SizeChanged += new System.EventHandler(this.simpleOpenGlControl1_SizeChanged);
             // 
             // GlMazeRenderScreen
             // 
