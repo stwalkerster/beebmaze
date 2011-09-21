@@ -144,15 +144,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Render\DotNetMazeRenderScreen.resx">
-      <DependentUpon>DotNetMazeRenderScreen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Render\MazeRenderScreen.resx">
-      <DependentUpon>MazeRenderScreen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Render\NullMazeRenderScreen.resx">
-      <DependentUpon>NullMazeRenderScreen.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="BeebMaze_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
