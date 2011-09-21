@@ -7,7 +7,7 @@
     //  The SettingsLoaded event is raised after the setting values are loaded.
     //  The SettingsSaving event is raised before the setting values are saved.
     internal sealed partial class Settings {
-        
+
         public Settings() {
             // // To add event handlers for saving and changing settings, uncomment the lines below:
             //
@@ -28,5 +28,7 @@
         public const int DISPLAY_DRIVER_NET = 1;
         public const int DISPLAY_DRIVER_GL2 = 2;
         public const int DISPLAY_DRIVER_GL3 = 3;
+        public const int DISPLAY_DRIVER_NULL = 4;
+
     }
 }

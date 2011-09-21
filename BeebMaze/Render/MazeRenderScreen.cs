@@ -20,6 +20,7 @@ namespace BeebMaze.Render
 
         public virtual void render(Block[,] maze)
         {
+           
             if(maze == null)
                 maze = lastKnownMaze;
             if(maze == null)
@@ -27,6 +28,7 @@ namespace BeebMaze.Render
 
             if(maze.Length != 0)
                 lastKnownMaze = maze;
+       
 
         }
 
@@ -37,7 +39,7 @@ namespace BeebMaze.Render
 
         private void MazeRenderScreen_Paint(object sender, PaintEventArgs e)
         {
-            render(lastKnownMaze);
+                render(lastKnownMaze);
         }
     }
 }

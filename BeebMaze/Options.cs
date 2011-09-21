@@ -74,6 +74,25 @@ namespace BeebMaze
                     radioButton3.Checked = true;
                     break;
             }
+
+            switch (Settings.Default.DisplayDriver)
+            {
+                case Settings.DISPLAY_DRIVER_NET:
+                    radioButton6.Checked = true;
+                    break;
+                case Settings.DISPLAY_DRIVER_GL2:
+                    radioButton7.Checked = true;
+                    break;
+                case Settings.DISPLAY_DRIVER_GL3:
+                    radioButton8.Checked = true;
+                    break;
+                case Settings.DISPLAY_DRIVER_NULL:
+                    radioButton9.Checked = true;
+                    break;
+                default:
+                    break;
+
+            }
         }
 
         private void button9_Click(object sender, EventArgs e)
@@ -95,6 +114,11 @@ namespace BeebMaze
         private void radioButton8_CheckedChanged(object sender, EventArgs e)
         {
             Settings.Default.DisplayDriver = Settings.DISPLAY_DRIVER_GL3;
+        }
+
+        private void radioButton9_CheckedChanged(object sender, EventArgs e)
+        {
+            Settings.Default.DisplayDriver = Settings.DISPLAY_DRIVER_NULL;
         }
     }
 }

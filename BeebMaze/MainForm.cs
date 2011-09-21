@@ -287,7 +287,7 @@ namespace BeebMaze
             lock (_mazeLock)
             {
                 _maze = maze;
-
+                performRender();
                 _mazePanel.Dock = DockStyle.Fill;
             }
 

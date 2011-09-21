@@ -112,6 +112,12 @@
     <Compile Include="Render\DotNetMazeRenderScreen.Designer.cs">
       <DependentUpon>DotNetMazeRenderScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Render\DotNetRendererBlock.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Render\DotNetRendererBlock.Designer.cs">
+      <DependentUpon>DotNetRendererBlock.cs</DependentUpon>
+    </Compile>
     <Compile Include="Render\MazeRenderScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
