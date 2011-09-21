@@ -2,18 +2,18 @@
 {
     public class Wall
     {
-        public BlockControl a;
-        public BlockControl b;
+        public Block a;
+        public Block b;
         public bool present = true;
 
-        public Wall(BlockControl a, BlockControl b, bool present)
+        public Wall(Block a, Block b, bool present)
         {
             this.a = a;
             this.b = b;
             this.present = present;
         }
 
-        public BlockControl getOpposite(BlockControl x)
+        public Block getOpposite(Block x)
         {
             return x == a ? b : a;
         }

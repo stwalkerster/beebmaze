@@ -92,14 +92,8 @@
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </Compile>
     <Compile Include="Block.cs" />
-    <Compile Include="BlockControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="BlockControl.Designer.cs">
-      <DependentUpon>BlockControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="DotNetMazeRenderScreen.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="DotNetMazeRenderScreen.Designer.cs">
       <DependentUpon>DotNetMazeRenderScreen.cs</DependentUpon>
@@ -128,9 +122,6 @@
     <Compile Include="Wall.cs" />
     <EmbeddedResource Include="AboutBox1.resx">
       <DependentUpon>AboutBox1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BlockControl.resx">
-      <DependentUpon>BlockControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

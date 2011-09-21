@@ -47,14 +47,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.block5 = new BeebMaze.BlockControl();
-            this.block6 = new BeebMaze.BlockControl();
-            this.block7 = new BeebMaze.BlockControl();
-            this.block8 = new BeebMaze.BlockControl();
-            this.block4 = new BeebMaze.BlockControl();
-            this.block3 = new BeebMaze.BlockControl();
-            this.block2 = new BeebMaze.BlockControl();
-            this.block1 = new BeebMaze.BlockControl();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.button9 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -201,14 +193,6 @@
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.block5);
-            this.groupBox3.Controls.Add(this.block6);
-            this.groupBox3.Controls.Add(this.block7);
-            this.groupBox3.Controls.Add(this.block8);
-            this.groupBox3.Controls.Add(this.block4);
-            this.groupBox3.Controls.Add(this.block3);
-            this.groupBox3.Controls.Add(this.block2);
-            this.groupBox3.Controls.Add(this.block1);
             this.groupBox3.Controls.Add(this.button2);
             this.groupBox3.Location = new System.Drawing.Point(218, 12);
             this.groupBox3.Name = "groupBox3";
@@ -297,118 +281,7 @@
             this.label2.Size = new System.Drawing.Size(70, 13);
             this.label2.TabIndex = 11;
             this.label2.Text = "Hidden Maze";
-            // 
-            // block5
-            // 
-            this.block5.currentState = BeebMaze.BlockControl.State.Unvisited;
-            this.block5.inMaze = false;
-            this.block5.Location = new System.Drawing.Point(301, 104);
-            this.block5.Name = "block5";
-            this.block5.revealMaze = true;
-            this.block5.Size = new System.Drawing.Size(24, 24);
-            this.block5.TabIndex = 10;
-            this.block5.wBottom = null;
-            this.block5.wLeft = null;
-            this.block5.wRight = null;
-            this.block5.wTop = null;
-            // 
-            // block6
-            // 
-            this.block6.currentState = BeebMaze.BlockControl.State.Exit;
-            this.block6.inMaze = false;
-            this.block6.Location = new System.Drawing.Point(278, 104);
-            this.block6.Name = "block6";
-            this.block6.revealMaze = true;
-            this.block6.Size = new System.Drawing.Size(24, 24);
-            this.block6.TabIndex = 9;
-            this.block6.wBottom = null;
-            this.block6.wLeft = null;
-            this.block6.wRight = null;
-            this.block6.wTop = null;
-            // 
-            // block7
-            // 
-            this.block7.currentState = BeebMaze.BlockControl.State.Current;
-            this.block7.inMaze = false;
-            this.block7.Location = new System.Drawing.Point(301, 80);
-            this.block7.Name = "block7";
-            this.block7.revealMaze = true;
-            this.block7.Size = new System.Drawing.Size(24, 24);
-            this.block7.TabIndex = 8;
-            this.block7.wBottom = null;
-            this.block7.wLeft = null;
-            this.block7.wRight = null;
-            this.block7.wTop = null;
-            // 
-            // block8
-            // 
-            this.block8.currentState = BeebMaze.BlockControl.State.Visited;
-            this.block8.inMaze = false;
-            this.block8.Location = new System.Drawing.Point(278, 80);
-            this.block8.Name = "block8";
-            this.block8.revealMaze = true;
-            this.block8.Size = new System.Drawing.Size(24, 24);
-            this.block8.TabIndex = 7;
-            this.block8.wBottom = null;
-            this.block8.wLeft = null;
-            this.block8.wRight = null;
-            this.block8.wTop = null;
-            // 
-            // block4
-            // 
-            this.block4.currentState = BeebMaze.BlockControl.State.Unvisited;
-            this.block4.inMaze = true;
-            this.block4.Location = new System.Drawing.Point(302, 34);
-            this.block4.Name = "block4";
-            this.block4.revealMaze = false;
-            this.block4.Size = new System.Drawing.Size(24, 24);
-            this.block4.TabIndex = 6;
-            this.block4.wBottom = null;
-            this.block4.wLeft = null;
-            this.block4.wRight = null;
-            this.block4.wTop = null;
-            // 
-            // block3
-            // 
-            this.block3.currentState = BeebMaze.BlockControl.State.Exit;
-            this.block3.inMaze = true;
-            this.block3.Location = new System.Drawing.Point(278, 34);
-            this.block3.Name = "block3";
-            this.block3.revealMaze = false;
-            this.block3.Size = new System.Drawing.Size(24, 24);
-            this.block3.TabIndex = 4;
-            this.block3.wBottom = null;
-            this.block3.wLeft = null;
-            this.block3.wRight = null;
-            this.block3.wTop = null;
-            // 
-            // block2
-            // 
-            this.block2.currentState = BeebMaze.BlockControl.State.Current;
-            this.block2.inMaze = true;
-            this.block2.Location = new System.Drawing.Point(302, 10);
-            this.block2.Name = "block2";
-            this.block2.revealMaze = false;
-            this.block2.Size = new System.Drawing.Size(24, 24);
-            this.block2.TabIndex = 3;
-            this.block2.wBottom = null;
-            this.block2.wLeft = null;
-            this.block2.wRight = null;
-            this.block2.wTop = null;
-            // 
-            // block1
-            // 
-            this.block1.currentState = BeebMaze.BlockControl.State.Visited;
-            this.block1.inMaze = true;
-            this.block1.Location = new System.Drawing.Point(278, 10);
-            this.block1.Name = "block1";
-            this.block1.revealMaze = false;
-            this.block1.Size = new System.Drawing.Size(24, 24);
-            this.block1.TabIndex = 2;
-            this.block1.wBottom = null;
-            this.block1.wLeft = null;
-            this.block1.wRight = null;
-            this.block1.wTop = null;
+
             // 
             // button9
             // 
@@ -628,15 +501,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
-        private BlockControl block1;
         private System.Windows.Forms.Button button2;
-        private BlockControl block4;
-        private BlockControl block3;
-        private BlockControl block2;
-        private BlockControl block5;
-        private BlockControl block6;
-        private BlockControl block7;
-        private BlockControl block8;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;

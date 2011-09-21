@@ -9,32 +9,6 @@ namespace BeebMaze
         public Options()
         {
             InitializeComponent();
-            var w1 = new Wall(block1, block2, false);
-            var w2 = new Wall(block2, block4, false);
-            var w3 = new Wall(block3, block4, false);
-            var w4 = new Wall(block3, block1, true);
-
-            var w5 = new Wall(block8, block7, false);
-            var w6 = new Wall(block7, block5, false);
-            var w7 = new Wall(block6, block5, false);
-            var w8 = new Wall(block8, block6, true);
-            block1.wBottom = w4;
-            block1.wRight = w1;
-            block2.wBottom = w2;
-            block2.wLeft = w1;
-            block3.wRight = w3;
-            block3.wTop = w4;
-            block4.wLeft = w3;
-            block4.wTop = w2;
-
-            block8.wBottom = w8;
-            block8.wRight = w5;
-            block7.wBottom = w6;
-            block7.wLeft = w5;
-            block6.wRight = w7;
-            block6.wTop = w8;
-            block5.wLeft = w7;
-            block5.wTop = w6;
         }
 
         private void button1_Click(object sender, EventArgs e)
