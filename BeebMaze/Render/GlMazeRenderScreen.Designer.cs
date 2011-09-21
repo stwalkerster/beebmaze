@@ -28,9 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.simpleOpenGlControl1 = new Tao.Platform.Windows.SimpleOpenGlControl();
+            this.SuspendLayout();
+            // 
+            // simpleOpenGlControl1
+            // 
+            this.simpleOpenGlControl1.AccumBits = ((byte)(0));
+            this.simpleOpenGlControl1.AutoCheckErrors = false;
+            this.simpleOpenGlControl1.AutoFinish = false;
+            this.simpleOpenGlControl1.AutoMakeCurrent = true;
+            this.simpleOpenGlControl1.AutoSwapBuffers = true;
+            this.simpleOpenGlControl1.BackColor = System.Drawing.Color.Black;
+            this.simpleOpenGlControl1.ColorBits = ((byte)(32));
+            this.simpleOpenGlControl1.DepthBits = ((byte)(16));
+            this.simpleOpenGlControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.simpleOpenGlControl1.Location = new System.Drawing.Point(0, 0);
+            this.simpleOpenGlControl1.Name = "simpleOpenGlControl1";
+            this.simpleOpenGlControl1.Size = new System.Drawing.Size(731, 393);
+            this.simpleOpenGlControl1.StencilBits = ((byte)(0));
+            this.simpleOpenGlControl1.TabIndex = 1;
+            // 
+            // GlMazeRenderScreen
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.Controls.Add(this.simpleOpenGlControl1);
+            this.Name = "GlMazeRenderScreen";
+            this.Controls.SetChildIndex(this.simpleOpenGlControl1, 0);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private Tao.Platform.Windows.SimpleOpenGlControl simpleOpenGlControl1;
     }
 }

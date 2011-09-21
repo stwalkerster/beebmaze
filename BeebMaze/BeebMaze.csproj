@@ -83,6 +83,8 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Tao.OpenGl, Version=0.0.0.0, Culture=neutral, PublicKeyToken=1ca010269a4501ef" />
+    <Reference Include="Tao.Platform.Windows, Version=1.0.0.3, Culture=neutral, PublicKeyToken=701104b2da67a104" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AboutBox1.cs">
@@ -168,6 +170,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Render\GlMazeRenderScreen.resx">
+      <DependentUpon>GlMazeRenderScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Render\MazeRenderScreen.resx">
+      <DependentUpon>MazeRenderScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="BeebMaze_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">

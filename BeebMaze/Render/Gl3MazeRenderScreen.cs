@@ -13,6 +13,9 @@ namespace BeebMaze.Render
         public Gl3MazeRenderScreen()
         {
             InitializeComponent();
+            rendererToolStripStatusLabel.Text = string.Format(rendererToolStripStatusLabel.Tag.ToString(),
+                                                  "3D OpenGL");
+
         }
     }
 }

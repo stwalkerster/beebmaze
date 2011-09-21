@@ -13,6 +13,9 @@ namespace BeebMaze.Render
         public Gl2MazeRenderScreen()
         {
             InitializeComponent();
+            rendererToolStripStatusLabel.Text = string.Format(rendererToolStripStatusLabel.Tag.ToString(),
+                                                  "2D OpenGL");
+
         }
     }
 }

@@ -13,6 +13,9 @@ namespace BeebMaze.Render
         public DotNetMazeRenderScreen()
         {
             InitializeComponent();
+            rendererToolStripStatusLabel.Text = string.Format(rendererToolStripStatusLabel.Tag.ToString(),
+                                                  ".NET Framework");
+
         }
     }
 }

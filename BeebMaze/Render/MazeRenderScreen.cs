@@ -15,6 +15,8 @@ namespace BeebMaze.Render
         public MazeRenderScreen()
         {
             InitializeComponent();
+            rendererToolStripStatusLabel.Text = string.Format(rendererToolStripStatusLabel.Tag.ToString(),
+                                                  "Generic");
         }
 
         protected Block[,] lastKnownMaze;
@@ -35,20 +37,12 @@ namespace BeebMaze.Render
 
         internal static MazeRenderScreen Create()
         {
-            switch (Settings.Default.DisplayDriver)
-            {
-                case Settings.DISPLAY_DRIVER_NULL:
-                    return new NullMazeRenderScreen();
-                case Settings.DISPLAY_DRIVER_NET:
-                    return new DotNetMazeRenderScreen();
-                default:
-                    return new NullMazeRenderScreen();
-            };
+            return (MazeRenderScreen) Activator.CreateInstance(whatAmI(Settings.Default.DisplayDriver));
         }
 
         private void MazeRenderScreen_Paint(object sender, PaintEventArgs e)
         {
-                render(lastKnownMaze);
+            render(lastKnownMaze);
         }
 
         internal static Type whatAmI(int identifier)

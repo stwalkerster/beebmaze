@@ -13,6 +13,9 @@ namespace BeebMaze.Render
         public NullMazeRenderScreen()
         {
             InitializeComponent();
+            rendererToolStripStatusLabel.Text = string.Format(rendererToolStripStatusLabel.Tag.ToString(),
+                                                  "Null");
+
         }
 
         public override void render(Block[,] maze)

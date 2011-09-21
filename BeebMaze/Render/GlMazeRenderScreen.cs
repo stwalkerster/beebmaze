@@ -13,6 +13,8 @@ namespace BeebMaze.Render
         public GlMazeRenderScreen()
         {
             InitializeComponent();
+            rendererToolStripStatusLabel.Text = string.Format(rendererToolStripStatusLabel.Tag.ToString(),
+                                                              "Generic OpenGL");
         }
     }
 }
