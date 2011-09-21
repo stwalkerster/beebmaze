@@ -98,6 +98,12 @@
     <Compile Include="BlockControl.Designer.cs">
       <DependentUpon>BlockControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="DotNetMazeRenderScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DotNetMazeRenderScreen.Designer.cs">
+      <DependentUpon>DotNetMazeRenderScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,7 +111,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MazeRenderScreen.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="MazeRenderScreen.Designer.cs">
       <DependentUpon>MazeRenderScreen.cs</DependentUpon>
