@@ -118,6 +118,24 @@
     <Compile Include="Render\DotNetRendererBlock.Designer.cs">
       <DependentUpon>DotNetRendererBlock.cs</DependentUpon>
     </Compile>
+    <Compile Include="Render\Gl2MazeRenderScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Render\Gl2MazeRenderScreen.Designer.cs">
+      <DependentUpon>Gl2MazeRenderScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Render\Gl3MazeRenderScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Render\Gl3MazeRenderScreen.Designer.cs">
+      <DependentUpon>Gl3MazeRenderScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Render\GlMazeRenderScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Render\GlMazeRenderScreen.Designer.cs">
+      <DependentUpon>GlMazeRenderScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Render\MazeRenderScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>

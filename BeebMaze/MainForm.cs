@@ -19,6 +19,8 @@ namespace BeebMaze
         private Thread _regenerationThread;
         private int _width;
 
+        private int lastRenderType = Settings.Default.DisplayDriver;
+        
         public MainForm()
         {
             InitializeComponent();
@@ -120,6 +122,11 @@ namespace BeebMaze
 
         private void performRender()
         {
+            if(_mazePanel.GetType() != MazeRenderScreen.whatAmI(lastRenderType))
+            {
+                _mazePanel = MazeRenderScreen.Create();
+            }
+
             lock (_mazeLock)
             {
                 _mazePanel.render(_maze);

@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using BeebMaze.Properties;
 
 namespace BeebMaze.Render
 {
@@ -34,12 +35,42 @@ namespace BeebMaze.Render
 
         internal static MazeRenderScreen Create()
         {
-            return new NullMazeRenderScreen();
+            switch (Settings.Default.DisplayDriver)
+            {
+                case Settings.DISPLAY_DRIVER_NULL:
+                    return new NullMazeRenderScreen();
+                case Settings.DISPLAY_DRIVER_NET:
+                    return new DotNetMazeRenderScreen();
+                default:
+                    return new NullMazeRenderScreen();
+            };
         }
 
         private void MazeRenderScreen_Paint(object sender, PaintEventArgs e)
         {
-                render(lastKnownMaze);
+            render(lastKnownMaze);
+        }
+
+        internal static Type whatAmI(int identifier)
+        {
+            switch (identifier)
+            {
+                case Settings.DISPLAY_DRIVER_NULL:
+                    return typeof(NullMazeRenderScreen);
+                case Settings.DISPLAY_DRIVER_NET:
+                    return typeof (DotNetMazeRenderScreen);
+                case Settings.DISPLAY_DRIVER_GL2:
+                    return typeof (Gl2MazeRenderScreen);
+                case Settings.DISPLAY_DRIVER_GL3:
+                    return typeof (Gl3MazeRenderScreen);
+                default:
+                    return null;
+            }
+        }
+
+        internal static int whatAmI(Type identifier)
+        {
+            throw new NotImplementedException();
         }
     }
 }
