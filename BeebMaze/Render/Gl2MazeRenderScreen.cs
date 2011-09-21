@@ -15,8 +15,11 @@ namespace BeebMaze.Render
         private const int WIDTH_WALL = 5,
                           WIDTH_CELL = 5;
 
+        private Block[,] maze = new Block[0,0];
+
         public override void render(Block[,] maze)
         {
+            this.maze = maze;
             simpleOpenGlControl1.Invalidate();
         }
 
@@ -30,6 +33,11 @@ namespace BeebMaze.Render
             simpleOpenGlControl1.Paint += simpleOpenGlControl1_Paint;
         }
 
+        /// <summary>
+        /// Handles the Paint event of the simpleOpenGlControl1 control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Windows.Forms.PaintEventArgs"/> instance containing the event data.</param>
         void simpleOpenGlControl1_Paint(object sender, PaintEventArgs e)
         {
             // reset the projection and modelview matrices
@@ -39,19 +47,15 @@ namespace BeebMaze.Render
             Gl.glMatrixMode(Gl.GL_MODELVIEW_MATRIX);
             Gl.glLoadIdentity();
 
+            // draw a polygon for the wall corners
             Gl.glBegin(Gl.GL_POLYGON);
 
-            Gl.glColor3f(1f, 0f, 0f);
-            Gl.glVertex2f(0, 1);
-
-            Gl.glColor3f(0f, 1f, 0f);
-            Gl.glVertex2f(-1, -1);
-
             Gl.glColor3f(1f, 1f, 1f);
-            Gl.glVertex2f(0,0);
 
-            Gl.glColor3f(0f, 0f, 1f);
-            Gl.glVertex2f(1, -1);
+            Gl.glVertex2f(-0.2f, 0.2f);
+            Gl.glVertex2f(-0.2f, -0.2f);
+            Gl.glVertex2f(0.2f, -0.2f);
+            Gl.glVertex2f(0.2f, 0.2f);
 
             Gl.glEnd();
         }
