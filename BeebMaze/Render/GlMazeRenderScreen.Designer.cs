@@ -47,6 +47,7 @@
             this.simpleOpenGlControl1.Size = new System.Drawing.Size(731, 393);
             this.simpleOpenGlControl1.StencilBits = ((byte)(0));
             this.simpleOpenGlControl1.TabIndex = 1;
+            this.simpleOpenGlControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.simpleOpenGlControl1_Paint);
             // 
             // GlMazeRenderScreen
             // 
@@ -61,6 +62,7 @@
 
         #endregion
 
-        private Tao.Platform.Windows.SimpleOpenGlControl simpleOpenGlControl1;
+        protected internal Tao.Platform.Windows.SimpleOpenGlControl simpleOpenGlControl1;
+
     }
 }

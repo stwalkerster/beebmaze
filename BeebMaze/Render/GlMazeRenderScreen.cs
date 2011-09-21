@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 
 namespace BeebMaze.Render
 {
@@ -15,6 +11,13 @@ namespace BeebMaze.Render
             InitializeComponent();
             rendererToolStripStatusLabel.Text = string.Format(rendererToolStripStatusLabel.Tag.ToString(),
                                                               "Generic OpenGL");
+            simpleOpenGlControl1.InitializeContexts();
         }
+
+        ~GlMazeRenderScreen()
+        {
+            simpleOpenGlControl1.DestroyContexts();
+        }
+
     }
 }
