@@ -48,9 +48,6 @@ namespace BeebMaze.Render
             Gl.glMatrixMode(Gl.GL_MODELVIEW_MATRIX);
             Gl.glLoadIdentity();
 
-            // draw a polygon for the wall corners
-            //drawQuad(0.1f);
-
             int cols = 10;
             int rows = 30;
 
@@ -58,14 +55,80 @@ namespace BeebMaze.Render
             float xscalingfactor = getScalingFactor(cols),
                   yscalingfactor = getScalingFactor(rows);
 
+            drawGridlines(cols, rows, xscalingfactor, yscalingfactor);
+
+            float xpoint = -1,
+                ypoint = -1;
+            for (int j = 0; j < rows; j++)
+            {
+                ypoint += ((WIDTH_WALL / 2) * yscalingfactor);
+
+                // draw upper walls/doors
+                for (int i = 0; i < cols; i++)
+                {
+                    Gl.glLoadIdentity();
+
+                    // iterate through cols
+                    xpoint += ((WIDTH_WALL / 2) * xscalingfactor);
+
+
+                    //draw wall
+                    Gl.glTranslatef(xpoint, ypoint, 0);
+                    drawQuad(getScalingFactor(cols));
+
+                    xpoint += ((WIDTH_WALL / 2) * xscalingfactor);
+                    xpoint += ((WIDTH_CELL / 2) * xscalingfactor);
+
+
+                    // draw cell
+
+
+                    xpoint += ((WIDTH_CELL / 2) * xscalingfactor);
+
+                }
+                ypoint += ((WIDTH_WALL / 2) * yscalingfactor);
+                ypoint += ((WIDTH_CELL / 2) * yscalingfactor);
+
+                xpoint = -1;
+                //draw mid walls/cells
+                for (int i = 0; i < cols; i++)
+                {
+                    // iterate through cols
+
+                    // draw wall
+                    // draw cell
+                }
+
+                // draw last col
+                Gl.glLoadIdentity();
+                Gl.glTranslatef(xpoint, ypoint, 0);
+                drawQuad(getScalingFactor(cols));
+                ypoint += ((WIDTH_CELL / 2) * yscalingfactor);
+
+            }
+
+            //draw bottom walls/doors
+            for (int i = 0; i < cols; i++)
+            {
+                // iterate through cols
+
+                // draw wall
+                // draw cell
+            }
+
+            Gl.glFlush();
+        }
+
+        private static void drawGridlines(int cols, int rows, float xscalingfactor, float yscalingfactor)
+        {
             float point = -1;
             Gl.glBegin(Gl.GL_LINES);
-            Gl.glColor3f(1,0,0);
+            Gl.glColor3f(1, 0, 0);
             for (int i = 0; i < rows; i++)
             {
                 Gl.glVertex2f(-1, point);
                 Gl.glVertex2f(1, point);
-                point += (WIDTH_WALL*yscalingfactor);
+                point += (WIDTH_WALL * yscalingfactor);
                 Gl.glVertex2f(-1, point);
                 Gl.glVertex2f(1, point);
                 point += (WIDTH_CELL * yscalingfactor);
@@ -80,7 +143,7 @@ namespace BeebMaze.Render
             Gl.glColor3f(0, 1, 0);
             for (int i = 0; i < cols; i++)
             {
-                Gl.glVertex2f(point,-1);
+                Gl.glVertex2f(point, -1);
                 Gl.glVertex2f(point, 1);
                 point += (WIDTH_WALL * xscalingfactor);
                 Gl.glVertex2f(point, -1);
@@ -90,8 +153,6 @@ namespace BeebMaze.Render
             Gl.glVertex2f(point, -1);
             Gl.glVertex2f(point, 1);
             Gl.glEnd();
-
-            Gl.glFlush();
         }
 
         private float getScalingFactor(int cells)
