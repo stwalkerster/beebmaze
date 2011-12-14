@@ -12,15 +12,12 @@ namespace BeebMaze.Render
 {
     public partial class Gl2MazeRenderScreen : GlMazeRenderScreen
     {
-        private const float WIDTH_WALL = 2f,
-                            WIDTH_CELL = 5f,
-                            GL_SIZE = 2f;
-
         private Block[,] maze = new Block[0,0];
 
         public override void render(Block[,] maze)
         {
             this.maze = maze;
+            this.lastKnownMaze = maze;
             simpleOpenGlControl1.Invalidate();
         }
 
@@ -41,139 +38,144 @@ namespace BeebMaze.Render
         /// <param name="e">The <see cref="System.Windows.Forms.PaintEventArgs"/> instance containing the event data.</param>
         void simpleOpenGlControl1_Paint(object sender, PaintEventArgs e)
         {
-            // reset the projection and modelview matrices
-            Gl.glMatrixMode(Gl.GL_PROJECTION_MATRIX);
+            if (maze == null) maze = lastKnownMaze;
+
+            if (maze == null) return;
+            
             Gl.glLoadIdentity();
+            Gl.glClearColor(0.5f, 0.5f, 0.5f,1f);
+            Gl.glClear(Gl.GL_COLOR_BUFFER_BIT);
 
-            Gl.glMatrixMode(Gl.GL_MODELVIEW_MATRIX);
-            Gl.glLoadIdentity();
-
-            int cols = 10;
-            int rows = 30;
-
-            //work out how much we have to scale this model by
-            float xscalingfactor = getScalingFactor(cols),
-                  yscalingfactor = getScalingFactor(rows);
-
-            drawGridlines(cols, rows, xscalingfactor, yscalingfactor);
-
-            float xpoint = -1,
-                ypoint = -1;
-            for (int j = 0; j < rows; j++)
+            try
             {
-                ypoint += ((WIDTH_WALL / 2) * yscalingfactor);
+                int rows = this.maze.GetUpperBound(1),
+                    cols = this.maze.GetUpperBound(0);
 
-                // draw upper walls/doors
-                for (int i = 0; i < cols; i++)
+
+                // x,y
+                float[,] xvertices = new float[(2*cols) + 2,(2*rows) + 2];
+                float[,] yvertices = new float[(2*cols) + 2,(2*rows) + 2];
+
+
+                const float cellWidth = 0.3f;
+                const float cellHeight = 0.3f;
+
+                const float wallWidth = 0.1f;
+                const float wallHeight = 0.1f;
+
+                float xval = 0;
+                for (int x = 0; x < (2*cols) + 2; x++)
                 {
-                    Gl.glLoadIdentity();
+                    if (x != 0) xval += x%2 == 0 ? cellWidth : wallWidth;
 
-                    // iterate through cols
-                    xpoint += ((WIDTH_WALL / 2) * xscalingfactor);
+                    float yval = 0;
+                    for (int y = 0; y < (2*rows) + 2; y++)
+                    {
+                        if (y != 0) yval += y%2 == 0 ? cellHeight : wallHeight;
 
-
-                    //draw wall
-                    Gl.glTranslatef(xpoint, ypoint, 0);
-                    drawQuad(getScalingFactor(cols));
-
-                    xpoint += ((WIDTH_WALL / 2) * xscalingfactor);
-                    xpoint += ((WIDTH_CELL / 2) * xscalingfactor);
-
-
-                    // draw cell
-
-
-                    xpoint += ((WIDTH_CELL / 2) * xscalingfactor);
-
-                }
-                ypoint += ((WIDTH_WALL / 2) * yscalingfactor);
-                ypoint += ((WIDTH_CELL / 2) * yscalingfactor);
-
-                xpoint = -1;
-                //draw mid walls/cells
-                for (int i = 0; i < cols; i++)
-                {
-                    // iterate through cols
-
-                    // draw wall
-                    // draw cell
+                        xvertices[x, y] = xval;
+                        yvertices[x, y] = yval;
+                    }
                 }
 
-                // draw last col
-                Gl.glLoadIdentity();
-                Gl.glTranslatef(xpoint, ypoint, 0);
-                drawQuad(getScalingFactor(cols));
-                ypoint += ((WIDTH_CELL / 2) * yscalingfactor);
+                float maxX = xvertices[(2*cols) + 1, (2*rows) + 1];
+                float maxY = yvertices[(2*cols) + 1, (2*rows) + 1];
 
+                float scaleX = 2/maxX;
+                float scaleY = 2/maxY;
+
+                Gl.glTranslatef(-1, 1, 0);
+                Gl.glScalef(scaleX, -scaleY, 1);
+
+                Gl.glColor3f(0f, 0f, 1f);
+                Gl.glBegin(Gl.GL_LINE_LOOP);
+                Gl.glVertex2f(xvertices[0, 0], yvertices[0, 0]);
+                Gl.glVertex2f(maxX, yvertices[0, 0]);
+                Gl.glVertex2f(maxX, maxY);
+                Gl.glVertex2f(xvertices[0, 0], maxY);
+                Gl.glEnd();
+                Gl.glColor3f(0f, 0f, 0f);
+
+                // wall corners
+                for (int x = 0; x <= cols; x++)
+                {
+                    for (int y = 0; y <= rows; y++)
+                    {
+                        drawCube(
+                            xvertices[x*2, y*2],
+                            yvertices[x*2, y*2],
+                            xvertices[(x*2) + 1, (y*2) + 1],
+                            yvertices[(x*2) + 1, (y*2) + 1]
+                            );
+                    }
+                }
+
+
+                for (int x = 0; x < cols; x++)
+                {
+                    for (int y = 0; y < rows; y++)
+                    {
+                        Block cell = maze[x, y];
+
+                        if (!cell.exitTop)
+                        {
+                            drawCube(
+                                xvertices[(x*2) + 1, y*2],
+                                yvertices[(x*2) + 1, y*2],
+                                xvertices[(x*2) + 2, (y*2) + 1],
+                                yvertices[(x*2) + 2, (y*2) + 1]
+                                );
+                        }
+
+                        if (!cell.exitLeft)
+                        {
+                            drawCube(
+                                xvertices[x*2, (y*2)+1],
+                                yvertices[x*2, (y*2)+1],
+                                xvertices[(x*2) + 1, (y*2) + 2],
+                                yvertices[(x*2) + 1, (y*2) + 2]
+                                );
+                        }
+
+                        if((x + 1) == cols)
+                        {
+                            drawCube(
+                                xvertices[(x*2) + 2, (y*2) + 1],
+                                yvertices[(x*2) + 2, (y*2) + 1],
+                                xvertices[(x*2) + 3, (y*2) + 2],
+                                yvertices[(x*2) + 3, (y*2) + 2]
+                                );
+
+                        }
+                        if ((y + 1) == rows)
+                        {
+                            drawCube(
+                                xvertices[(x*2) + 1, (y*2) + 2],
+                                yvertices[(x*2) + 1, (y*2) + 2],
+                                xvertices[(x*2) + 2, (y*2) + 3],
+                                yvertices[(x*2) + 3, (y*2) + 3]
+                                );
+
+                        }
+                    }
+                }
             }
-
-            //draw bottom walls/doors
-            for (int i = 0; i < cols; i++)
+            catch (Exception ex)
             {
-                // iterate through cols
-
-                // draw wall
-                // draw cell
             }
 
-            Gl.glFlush();
         }
 
-        private static void drawGridlines(int cols, int rows, float xscalingfactor, float yscalingfactor)
+        void drawCube(float x1, float y1, float x2, float y2)
         {
-            float point = -1;
-            Gl.glBegin(Gl.GL_LINES);
-            Gl.glColor3f(1, 0, 0);
-            for (int i = 0; i < rows; i++)
-            {
-                Gl.glVertex2f(-1, point);
-                Gl.glVertex2f(1, point);
-                point += (WIDTH_WALL * yscalingfactor);
-                Gl.glVertex2f(-1, point);
-                Gl.glVertex2f(1, point);
-                point += (WIDTH_CELL * yscalingfactor);
-            }
-            Gl.glVertex2f(-1, point);
-            Gl.glVertex2f(1, point);
-            Gl.glEnd();
-
-            point = -1;
-
-            Gl.glBegin(Gl.GL_LINES);
-            Gl.glColor3f(0, 1, 0);
-            for (int i = 0; i < cols; i++)
-            {
-                Gl.glVertex2f(point, -1);
-                Gl.glVertex2f(point, 1);
-                point += (WIDTH_WALL * xscalingfactor);
-                Gl.glVertex2f(point, -1);
-                Gl.glVertex2f(point, 1);
-                point += (WIDTH_CELL * xscalingfactor);
-            }
-            Gl.glVertex2f(point, -1);
-            Gl.glVertex2f(point, 1);
-            Gl.glEnd();
-        }
-
-        private float getScalingFactor(int cells)
-        {
-            return GL_SIZE/((WIDTH_WALL*(cells + 1)) + (cells*WIDTH_CELL));
-        }
-
-        void drawQuad(float size)
-        {
-            size = size/2;
-
             Gl.glBegin(Gl.GL_POLYGON);
-
-            Gl.glColor3f(1f, 1f, 1f);
-
-            Gl.glVertex2f(-size, size);
-            Gl.glVertex2f(-size, -size);
-            Gl.glVertex2f(size, -size);
-            Gl.glVertex2f(size, size);
-
+            Gl.glVertex2f(x1, y1);
+            Gl.glVertex2f(x1, y2);
+            Gl.glVertex2f(x2, y2);
+            Gl.glVertex2f(x2, y1);
             Gl.glEnd();
+
         }
+
     }
 }
