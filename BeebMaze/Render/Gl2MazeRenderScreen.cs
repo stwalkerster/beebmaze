@@ -14,10 +14,10 @@ namespace BeebMaze.Render
     {
         private Block[,] maze = new Block[0,0];
 
-        public override void render(Block[,] maze)
+        public override void render(Block[,] pmaze)
         {
-            this.maze = maze;
-            this.lastKnownMaze = maze;
+            this.maze = pmaze;
+            this.lastKnownMaze = pmaze;
             simpleOpenGlControl1.Invalidate();
         }
 
@@ -49,8 +49,8 @@ namespace BeebMaze.Render
 
             try
             {
-                int rows = this.maze.GetUpperBound(1),
-                    cols = this.maze.GetUpperBound(0);
+                int rows = this.maze.GetUpperBound(1)+1,
+                    cols = this.maze.GetUpperBound(0)+1;
 
 
                 // x,y
