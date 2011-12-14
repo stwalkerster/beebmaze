@@ -87,16 +87,8 @@ namespace BeebMaze.Render
                 Gl.glTranslatef(-1, 1, 0);
                 Gl.glScalef(scaleX, -scaleY, 1);
 
-                Gl.glColor3f(0f, 0f, 1f);
-                Gl.glBegin(Gl.GL_LINE_LOOP);
-                Gl.glVertex2f(xvertices[0, 0], yvertices[0, 0]);
-                Gl.glVertex2f(maxX, yvertices[0, 0]);
-                Gl.glVertex2f(maxX, maxY);
-                Gl.glVertex2f(xvertices[0, 0], maxY);
-                Gl.glEnd();
                 Gl.glColor3f(0f, 0f, 0f);
-
-                // wall corners
+                #region wall corners
                 for (int x = 0; x <= cols; x++)
                 {
                     for (int y = 0; y <= rows; y++)
@@ -109,6 +101,7 @@ namespace BeebMaze.Render
                             );
                     }
                 }
+                #endregion
 
 
                 for (int x = 0; x < cols; x++)
@@ -116,6 +109,9 @@ namespace BeebMaze.Render
                     for (int y = 0; y < rows; y++)
                     {
                         Block cell = maze[x, y];
+
+                        Gl.glColor3f(0f, 0f, 0f);
+                        #region walls
 
                         if (!cell.exitTop)
                         {
@@ -130,14 +126,14 @@ namespace BeebMaze.Render
                         if (!cell.exitLeft)
                         {
                             drawCube(
-                                xvertices[x*2, (y*2)+1],
-                                yvertices[x*2, (y*2)+1],
+                                xvertices[x*2, (y*2) + 1],
+                                yvertices[x*2, (y*2) + 1],
                                 xvertices[(x*2) + 1, (y*2) + 2],
                                 yvertices[(x*2) + 1, (y*2) + 2]
                                 );
                         }
 
-                        if((x + 1) == cols)
+                        if ((x + 1) == cols)
                         {
                             drawCube(
                                 xvertices[(x*2) + 2, (y*2) + 1],
@@ -157,6 +153,36 @@ namespace BeebMaze.Render
                                 );
 
                         }
+
+                        #endregion
+
+                        #region cells
+                        switch (cell.currentState)
+                        {
+                            case Block.State.Current:
+                                Gl.glColor3f(0f, 0.5f, 0f);
+                                break;
+                            case Block.State.Exit:
+                                Gl.glColor3f(1f, 0f, 0f);
+                                break;
+                            case Block.State.Unvisited:
+                                Gl.glColor3f(0.3f, 0.3f, 0.3f);
+                                break;
+                            case Block.State.Visited:
+                                Gl.glColor3f(0.7f, 0.7f, 0.7f);
+                                break;
+                        }
+                        drawCube(
+                            xvertices[(x*2) + 1, (y*2) + 1],
+                            yvertices[(x*2) + 1, (y*2) + 1],
+                            xvertices[(x*2) + 2, (y*2) + 2],
+                            yvertices[(x*2) + 2, (y*2) + 2]
+                            );
+                        #endregion
+
+                        #region doors
+
+                        #endregion
                     }
                 }
             }
