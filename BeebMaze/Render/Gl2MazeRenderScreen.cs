@@ -29,6 +29,7 @@ namespace BeebMaze.Render
                                                   "2D OpenGL");
             Gl.glViewport(0, 0, simpleOpenGlControl1.Size.Width, simpleOpenGlControl1.Size.Height);
             simpleOpenGlControl1.Paint += simpleOpenGlControl1_Paint;
+            simpleOpenGlControl1.PreviewKeyDown += Program.app.form1KeyDown;
         }
 
         /// <summary>

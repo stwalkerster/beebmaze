@@ -5,6 +5,7 @@ namespace BeebMaze
 {
     internal static class Program
     {
+        public static MainForm app;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -13,7 +14,9 @@ namespace BeebMaze
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+
+            app = new MainForm();
+            Application.Run(app);
         }
     }
 }

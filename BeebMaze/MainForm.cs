@@ -78,7 +78,7 @@ namespace BeebMaze
 
         private event EventHandler generationComplete;
 
-        private void form1KeyDown(object sender, PreviewKeyDownEventArgs e)
+        public void form1KeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             if (e.KeyCode == Keys.Down && currentBlock.exitBottom)
             {
