@@ -42,15 +42,19 @@ namespace BeebMaze.Render
             if (maze == null) maze = lastKnownMaze;
 
             if (maze == null) return;
-            
+
             Gl.glLoadIdentity();
-            Gl.glClearColor(0.5f, 0.5f, 0.5f,1f);
+
+            //background - use unvisitedblock
+            float[] clearCol = getColour(Properties.Settings.Default.ColorUnvisitedBlock);
+            Gl.glClearColor(clearCol[0], clearCol[1], clearCol[2], 1f);
+
             Gl.glClear(Gl.GL_COLOR_BUFFER_BIT);
 
             try
             {
-                int rows = this.maze.GetUpperBound(1)+1,
-                    cols = this.maze.GetUpperBound(0)+1;
+                int rows = this.maze.GetUpperBound(1) + 1,
+                    cols = this.maze.GetUpperBound(0) + 1;
 
 
                 // x,y
@@ -88,8 +92,10 @@ namespace BeebMaze.Render
                 Gl.glTranslatef(-1, 1, 0);
                 Gl.glScalef(scaleX, -scaleY, 1);
 
-                Gl.glColor3f(0f, 0f, 0f);
+                Gl.glColor3fv(getColour(Properties.Settings.Default.ColorWalls));
+
                 #region wall corners
+
                 for (int x = 0; x <= cols; x++)
                 {
                     for (int y = 0; y <= rows; y++)
@@ -102,6 +108,7 @@ namespace BeebMaze.Render
                             );
                     }
                 }
+
                 #endregion
 
 
@@ -111,7 +118,8 @@ namespace BeebMaze.Render
                     {
                         Block cell = maze[x, y];
 
-                        Gl.glColor3f(0f, 0f, 0f);
+                        Gl.glColor3fv(getColour(Properties.Settings.Default.ColorWalls));
+
                         #region walls
 
                         if (!cell.exitTop)
@@ -158,19 +166,20 @@ namespace BeebMaze.Render
                         #endregion
 
                         #region cells
+
                         switch (cell.currentState)
                         {
                             case Block.State.Current:
-                                Gl.glColor3f(0f, 0.5f, 0f);
+                                Gl.glColor3fv(getColour(Properties.Settings.Default.ColorCurrentBlock));
                                 break;
                             case Block.State.Exit:
-                                Gl.glColor3f(1f, 0f, 0f);
+                                Gl.glColor3fv(getColour(Properties.Settings.Default.ColorExitBlock));
                                 break;
                             case Block.State.Unvisited:
-                                Gl.glColor3f(0.3f, 0.3f, 0.3f);
+                                Gl.glColor3fv(getColour(Properties.Settings.Default.ColorUnvisitedBlock));
                                 break;
                             case Block.State.Visited:
-                                Gl.glColor3f(0.7f, 0.7f, 0.7f);
+                                Gl.glColor3fv(getColour(Properties.Settings.Default.ColorVisitedBlock));
                                 break;
                         }
                         drawCube(
@@ -179,9 +188,12 @@ namespace BeebMaze.Render
                             xvertices[(x*2) + 2, (y*2) + 2],
                             yvertices[(x*2) + 2, (y*2) + 2]
                             );
+
                         #endregion
 
                         #region doors
+
+                        Gl.glColor3fv(getColour(Properties.Settings.Default.ColorDoors));
 
                         #endregion
                     }
@@ -204,5 +216,15 @@ namespace BeebMaze.Render
 
         }
 
+        float[] getColour(Color color)
+        {
+            float[] colvector = new float[3];
+
+            colvector[0] = ((float) ((uint) color.R)/255);
+            colvector[1] = ((float) ((uint) color.G)/255);
+            colvector[2] = ((float) ((uint) color.B)/255);
+
+            return colvector;
+        }
     }
 }
