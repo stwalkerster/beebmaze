@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
@@ -64,6 +63,7 @@
             this.radioButton7 = new System.Windows.Forms.RadioButton();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -85,15 +85,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Maze Size";
-            // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(68, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(126, 119);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Smaller sizes mean smaller squares on the maze - hence a larger and harder maze. " +
-                "However, the more squares the maze has, the longer it takes to generate.";
             // 
             // radioButton5
             // 
@@ -424,6 +415,7 @@
             // radioButton8
             // 
             this.radioButton8.AutoSize = true;
+            this.radioButton8.Enabled = false;
             this.radioButton8.Location = new System.Drawing.Point(6, 65);
             this.radioButton8.Name = "radioButton8";
             this.radioButton8.Size = new System.Drawing.Size(124, 17);
@@ -446,6 +438,7 @@
             // radioButton6
             // 
             this.radioButton6.AutoSize = true;
+            this.radioButton6.Enabled = false;
             this.radioButton6.Location = new System.Drawing.Point(6, 19);
             this.radioButton6.Name = "radioButton6";
             this.radioButton6.Size = new System.Drawing.Size(209, 17);
@@ -466,6 +459,15 @@
             this.checkBox2.TabIndex = 6;
             this.checkBox2.Text = "Reveal Maze";
             this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(68, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(126, 119);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Smaller sizes mean smaller squares on the maze - hence a larger and harder maze. " +
+                "However, the more squares the maze has, the longer it takes to generate.";
             // 
             // Options
             // 
@@ -508,7 +510,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button2;
@@ -535,5 +536,6 @@
         private System.Windows.Forms.RadioButton radioButton7;
         private System.Windows.Forms.RadioButton radioButton6;
         private System.Windows.Forms.RadioButton radioButton9;
+        private System.Windows.Forms.Label label1;
     }
 }

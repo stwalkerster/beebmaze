@@ -122,7 +122,7 @@ namespace BeebMaze
 
         private void performRender()
         {
-            if(_mazePanel.GetType() != MazeRenderScreen.whatAmI(Settings.Default.DisplayDriver))
+            if(_mazePanel == null || (_mazePanel.GetType() != MazeRenderScreen.whatAmI(Settings.Default.DisplayDriver)))
             {
                 panel1.Controls.Clear();
                 _mazePanel = MazeRenderScreen.Create();
@@ -194,7 +194,6 @@ namespace BeebMaze
             int width = data.width;
             int height = data.height;
 
-            _mazePanel = MazeRenderScreen.Create();
 
             var maze = new Block[width,height];
 
@@ -297,9 +296,9 @@ namespace BeebMaze
             lock (_mazeLock)
             {
                 _maze = maze;
-                performRender();
-                _mazePanel.Dock = DockStyle.Fill;
             }
+
+            this.Invoke(new Action(performRender));
 
             updateData("Drawing completed maze", -1);
 
