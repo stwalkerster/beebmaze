@@ -85,7 +85,7 @@ namespace BeebMaze.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("DarkGray")]
+        [global::System.Configuration.DefaultSettingValueAttribute("LightGray")]
         public global::System.Drawing.Color ColorUnvisitedBlock {
             get {
                 return ((global::System.Drawing.Color)(this["ColorUnvisitedBlock"]));

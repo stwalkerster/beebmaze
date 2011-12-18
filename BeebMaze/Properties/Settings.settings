@@ -18,7 +18,7 @@
       <Value Profile="(Default)">Red</Value>
     </Setting>
     <Setting Name="ColorUnvisitedBlock" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">DarkGray</Value>
+      <Value Profile="(Default)">LightGray</Value>
     </Setting>
     <Setting Name="ColorIncorrectBlock" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">Orange</Value>
