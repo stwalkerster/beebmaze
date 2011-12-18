@@ -157,6 +157,7 @@ namespace BeebMaze
                         if (block.countEffectiveWalls() != 3) continue;
 
                         block.inMaze = false;
+                        block.hidden = false;
                         changed = true;
                     }
                 }
@@ -229,6 +230,8 @@ namespace BeebMaze
                         maze[x, y].wTop = w;
                         maze[x, y - 1].wBottom = w;
                     }
+
+                    maze[x, y].hidden = !Settings.Default.RevealMaze;
                 }
             }
 

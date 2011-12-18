@@ -439,7 +439,6 @@
             this.checkBox2.Checked = global::BeebMaze.Properties.Settings.Default.RevealMaze;
             this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox2.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::BeebMaze.Properties.Settings.Default, "RevealMaze", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.checkBox2.Enabled = false;
             this.checkBox2.Location = new System.Drawing.Point(12, 211);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(89, 17);

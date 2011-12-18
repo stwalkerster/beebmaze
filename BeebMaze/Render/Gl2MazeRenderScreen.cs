@@ -203,10 +203,13 @@ namespace BeebMaze.Render
                                 Gl.glColor3fv(getColour(Properties.Settings.Default.ColorExitBlock));
                                 break;
                             case Block.State.Unvisited:
-                                Gl.glColor3fv(getColour(Properties.Settings.Default.ColorUnvisitedBlock));
+                                Gl.glColor3fv(getColour(cell.hidden ? Properties.Settings.Default.ColorWalls : Properties.Settings.Default.ColorUnvisitedBlock));
                                 break;
                             case Block.State.Visited:
-                                Gl.glColor3fv(getColour(Properties.Settings.Default.ColorVisitedBlock));
+                                Gl.glColor3fv(
+                                    getColour(cell.inMaze
+                                                  ? Properties.Settings.Default.ColorVisitedBlock
+                                                  : Properties.Settings.Default.ColorIncorrectBlock));
                                 break;
                         }
                         drawCube(

@@ -69,9 +69,13 @@ namespace BeebMaze.Render
 
         protected Color getDoorColour(Wall w, Block currentCell)
         {
+            Block.State doorState = Block.State.Unvisited;
+
+            if (currentCell.hidden && w.getOpposite(currentCell).hidden)
+                return Settings.Default.ColorWalls;
+
             if (!Settings.Default.UseFancyDoors) return Settings.Default.ColorDoors;
 
-            Block.State doorState = Block.State.Unvisited;
 
             if (w.getOpposite(currentCell).currentState != currentCell.currentState)
             { // check exit and current states
@@ -104,7 +108,6 @@ namespace BeebMaze.Render
                     if (currentCell.currentState == Block.State.Current
                         && w.getOpposite(currentCell).currentState == Block.State.Exit)
                         doorState = Block.State.Current;
-
                 }
             }
             else

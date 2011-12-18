@@ -15,12 +15,19 @@ namespace BeebMaze
             Exit
         }
 
+        public bool hidden { get; set; }
+
         private State _currentState = State.Unvisited;
         public bool isExit;
         public State currentState
         {
             get { return _currentState; }
-            set { _currentState = isExit ? State.Exit : value; }
+            set
+            {
+                if(value == State.Current)
+                    hidden = false;
+                _currentState = isExit ? State.Exit : value;
+            }
         }
 
         public bool inMaze { get; set; }
