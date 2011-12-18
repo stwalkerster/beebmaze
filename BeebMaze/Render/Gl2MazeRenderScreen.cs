@@ -12,7 +12,7 @@ namespace BeebMaze.Render
 {
     public partial class Gl2MazeRenderScreen : GlMazeRenderScreen
     {
-        private Block[,] maze = new Block[0,0];
+        protected Block[,] maze = new Block[0,0];
 
         public override void render(Block[,] pmaze)
         {
@@ -26,8 +26,9 @@ namespace BeebMaze.Render
         {
             InitializeComponent();
             rendererToolStripStatusLabel.Text = string.Format(rendererToolStripStatusLabel.Tag.ToString(),
-                                                  "2D OpenGL");
-            Gl.glViewport(0, 0, simpleOpenGlControl1.Size.Width, simpleOpenGlControl1.Size.Height);
+                                                              "2D OpenGL");
+            Gl.glMatrixMode(Gl.GL_MODELVIEW);
+
             simpleOpenGlControl1.Paint += simpleOpenGlControl1_Paint;
             simpleOpenGlControl1.PreviewKeyDown += Program.app.form1KeyDown;
         }
@@ -44,13 +45,19 @@ namespace BeebMaze.Render
             if (maze == null) return;
 
             Gl.glLoadIdentity();
-
             //background - use unvisitedblock
-            float[] clearCol = getColour(Properties.Settings.Default.ColorUnvisitedBlock);
+            float[] clearCol = getColour(Color.Magenta);
             Gl.glClearColor(clearCol[0], clearCol[1], clearCol[2], 1f);
 
             Gl.glClear(Gl.GL_COLOR_BUFFER_BIT);
+   
 
+            drawScene();
+
+        }
+
+        protected void drawScene()
+        {
             try
             {
                 int rows = this.maze.GetUpperBound(1) + 1,
@@ -231,21 +238,37 @@ namespace BeebMaze.Render
             catch (Exception ex)
             {
             }
-
         }
 
-        void drawCube(float x1, float y1, float x2, float y2)
+       protected void drawCube(float x1, float y1, float x2, float y2, float height = 0f)
         {
             Gl.glBegin(Gl.GL_POLYGON);
-            Gl.glVertex2f(x1, y1);
-            Gl.glVertex2f(x1, y2);
-            Gl.glVertex2f(x2, y2);
-            Gl.glVertex2f(x2, y1);
+            Gl.glVertex3f(x1, y1, 0f);
+            Gl.glVertex3f(x1, y2, 0f);
+            Gl.glVertex3f(x2, y2, 0f);
+            Gl.glVertex3f(x2, y1, 0f);
             Gl.glEnd();
+
+            if(height != 0f)
+            {
+                Gl.glBegin(Gl.GL_POLYGON);
+                Gl.glVertex3f(x1, y1, height);
+                Gl.glVertex3f(x1, y2, height);
+                Gl.glVertex3f(x2, y2, height);
+                Gl.glVertex3f(x2, y1, height);
+                Gl.glEnd();
+
+                Gl.glBegin(Gl.GL_POLYGON);
+                Gl.glVertex3f(x1, y1, 0);
+                Gl.glVertex3f(x1, y2, 0);
+                Gl.glVertex3f(x1, y2, height);
+                Gl.glVertex3f(x1, y1, height);
+                Gl.glEnd();
+            }
 
         }
 
-        float[] getColour(Color color)
+        protected float[] getColour(Color color)
         {
             float[] colvector = new float[3];
 

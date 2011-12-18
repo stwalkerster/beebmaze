@@ -401,7 +401,6 @@
             // radioButton8
             // 
             this.radioButton8.AutoSize = true;
-            this.radioButton8.Enabled = false;
             this.radioButton8.Location = new System.Drawing.Point(6, 65);
             this.radioButton8.Name = "radioButton8";
             this.radioButton8.Size = new System.Drawing.Size(124, 17);
