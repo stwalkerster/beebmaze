@@ -19,8 +19,6 @@ namespace BeebMaze
         private Thread _regenerationThread;
         private int _width;
 
-        private int lastRenderType = Settings.Default.DisplayDriver;
-        
         public MainForm()
         {
             InitializeComponent();
