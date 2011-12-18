@@ -59,6 +59,7 @@ namespace BeebMaze
             _width = panel1.Width/resolution;
             _height = panel1.Height/resolution;
             _maze = null;
+            solvedMaze = false;
 
             updateData("Initialising thread...", -1);
 
@@ -140,6 +141,8 @@ namespace BeebMaze
         {
             bool changed;
 
+            solvedMaze = true;
+
             do
             {
                 changed = false;
@@ -175,6 +178,11 @@ namespace BeebMaze
                     }
                 }
             }
+        }
+
+        public bool solvedMaze
+        {
+            get; private set;
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)

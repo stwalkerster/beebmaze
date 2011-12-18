@@ -249,6 +249,7 @@ namespace BeebMaze.Render
             if (w.getOpposite(currentCell).currentState != currentCell.currentState)
             { // check exit and current states
 
+                // use non-current state for when it's next to each other
                 if (currentCell.currentState == Block.State.Current)
                     doorState = w.getOpposite(currentCell).currentState;
                 if (w.getOpposite(currentCell).currentState == Block.State.Current)
@@ -258,6 +259,26 @@ namespace BeebMaze.Render
                     doorState = w.getOpposite(currentCell).currentState;
                 if (w.getOpposite(currentCell).currentState == Block.State.Exit)
                     doorState = currentCell.currentState;
+
+                if (!Program.app.solvedMaze)
+                {
+                    if (currentCell.currentState == Block.State.Exit
+                        && w.getOpposite(currentCell).currentState == Block.State.Current)
+                        doorState = Block.State.Unvisited;
+                    if (currentCell.currentState == Block.State.Current
+                        && w.getOpposite(currentCell).currentState == Block.State.Exit)
+                        doorState = Block.State.Visited;
+                }
+                else
+                {
+                    if (currentCell.currentState == Block.State.Exit
+                         && w.getOpposite(currentCell).currentState == Block.State.Current)
+                        doorState = Block.State.Current;
+                    if (currentCell.currentState == Block.State.Current
+                        && w.getOpposite(currentCell).currentState == Block.State.Exit)
+                        doorState = Block.State.Current;
+
+                }
             }
             else
             { // same state, mark as same colour
