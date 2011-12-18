@@ -166,5 +166,17 @@ namespace BeebMaze.Properties {
                 this["DisplayDriver"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool UseFancyDoors {
+            get {
+                return ((bool)(this["UseFancyDoors"]));
+            }
+            set {
+                this["UseFancyDoors"] = value;
+            }
+        }
     }
 }

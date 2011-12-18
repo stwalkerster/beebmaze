@@ -66,5 +66,66 @@ namespace BeebMaze.Render
         {
             throw new NotImplementedException();
         }
+
+        protected Color getDoorColour(Wall w, Block currentCell)
+        {
+            if (!Settings.Default.UseFancyDoors) return Settings.Default.ColorDoors;
+
+            Block.State doorState = Block.State.Unvisited;
+
+            if (w.getOpposite(currentCell).currentState != currentCell.currentState)
+            { // check exit and current states
+
+                // use non-current state for when it's next to each other
+                if (currentCell.currentState == Block.State.Current)
+                    doorState = w.getOpposite(currentCell).currentState;
+                if (w.getOpposite(currentCell).currentState == Block.State.Current)
+                    doorState = currentCell.currentState;
+
+                if (currentCell.currentState == Block.State.Exit)
+                    doorState = w.getOpposite(currentCell).currentState;
+                if (w.getOpposite(currentCell).currentState == Block.State.Exit)
+                    doorState = currentCell.currentState;
+
+                if (!Program.app.solvedMaze)
+                {
+                    if (currentCell.currentState == Block.State.Exit
+                        && w.getOpposite(currentCell).currentState == Block.State.Current)
+                        doorState = Block.State.Unvisited;
+                    if (currentCell.currentState == Block.State.Current
+                        && w.getOpposite(currentCell).currentState == Block.State.Exit)
+                        doorState = Block.State.Visited;
+                }
+                else
+                {
+                    if (currentCell.currentState == Block.State.Exit
+                         && w.getOpposite(currentCell).currentState == Block.State.Current)
+                        doorState = Block.State.Current;
+                    if (currentCell.currentState == Block.State.Current
+                        && w.getOpposite(currentCell).currentState == Block.State.Exit)
+                        doorState = Block.State.Current;
+
+                }
+            }
+            else
+            { // same state, mark as same colour
+                doorState = currentCell.currentState;
+            }
+
+            switch (doorState)
+            {
+                case Block.State.Unvisited:
+                    return Properties.Settings.Default.ColorDoors;
+                case Block.State.Current:
+                    return Properties.Settings.Default.ColorCurrentBlock;
+                case Block.State.Visited:
+                    return Properties.Settings.Default.ColorVisitedBlock;
+                case Block.State.Exit:
+                    return Properties.Settings.Default.ColorExitBlock;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
     }
 }
