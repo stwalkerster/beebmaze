@@ -118,12 +118,22 @@ namespace BeebMaze.Render
                     {
                         Block cell = maze[x, y];
 
-                        Gl.glColor3fv(getColour(Properties.Settings.Default.ColorWalls));
-
                         #region walls
 
                         if (!cell.exitTop)
                         {
+                            Gl.glColor3fv(getColour(Properties.Settings.Default.ColorWalls));
+
+                            drawCube(
+                                xvertices[(x*2) + 1, y*2],
+                                yvertices[(x*2) + 1, y*2],
+                                xvertices[(x*2) + 2, (y*2) + 1],
+                                yvertices[(x*2) + 2, (y*2) + 1]
+                                );
+                        }
+                        else
+                        {
+                            Gl.glColor3fv(getColour(getDoorColour(cell.wTop,cell)));
                             drawCube(
                                 xvertices[(x*2) + 1, y*2],
                                 yvertices[(x*2) + 1, y*2],
@@ -134,6 +144,18 @@ namespace BeebMaze.Render
 
                         if (!cell.exitLeft)
                         {
+                            Gl.glColor3fv(getColour(Properties.Settings.Default.ColorWalls));
+
+                            drawCube(
+                                xvertices[x*2, (y*2) + 1],
+                                yvertices[x*2, (y*2) + 1],
+                                xvertices[(x*2) + 1, (y*2) + 2],
+                                yvertices[(x*2) + 1, (y*2) + 2]
+                                );
+                        }
+                        else
+                        {
+                            Gl.glColor3fv(getColour(getDoorColour(cell.wLeft, cell)));
                             drawCube(
                                 xvertices[x*2, (y*2) + 1],
                                 yvertices[x*2, (y*2) + 1],
@@ -144,6 +166,8 @@ namespace BeebMaze.Render
 
                         if ((x + 1) == cols)
                         {
+                            Gl.glColor3fv(getColour(Properties.Settings.Default.ColorWalls));
+
                             drawCube(
                                 xvertices[(x*2) + 2, (y*2) + 1],
                                 yvertices[(x*2) + 2, (y*2) + 1],
@@ -152,8 +176,11 @@ namespace BeebMaze.Render
                                 );
 
                         }
+
                         if ((y + 1) == rows)
                         {
+                            Gl.glColor3fv(getColour(Properties.Settings.Default.ColorWalls));
+
                             drawCube(
                                 xvertices[(x*2) + 1, (y*2) + 2],
                                 yvertices[(x*2) + 1, (y*2) + 2],
@@ -193,7 +220,6 @@ namespace BeebMaze.Render
 
                         #region doors
 
-                        Gl.glColor3fv(getColour(Properties.Settings.Default.ColorDoors));
 
                         #endregion
                     }
@@ -214,6 +240,43 @@ namespace BeebMaze.Render
             Gl.glVertex2f(x2, y1);
             Gl.glEnd();
 
+        }
+
+        Color getDoorColour(Wall w, Block currentCell)
+        {
+            Block.State doorState = Block.State.Unvisited;
+
+            if (w.getOpposite(currentCell).currentState != currentCell.currentState)
+            { // check exit and current states
+
+                if (currentCell.currentState == Block.State.Current)
+                    doorState = w.getOpposite(currentCell).currentState;
+                if (w.getOpposite(currentCell).currentState == Block.State.Current)
+                    doorState = currentCell.currentState;
+
+                if (currentCell.currentState == Block.State.Exit)
+                    doorState = w.getOpposite(currentCell).currentState;
+                if (w.getOpposite(currentCell).currentState == Block.State.Exit)
+                    doorState = currentCell.currentState;
+            }
+            else
+            { // same state, mark as same colour
+                doorState = currentCell.currentState;
+            }
+
+            switch (doorState)
+            {
+                case Block.State.Unvisited:
+                    return Properties.Settings.Default.ColorDoors;
+                case Block.State.Current:
+                    return Properties.Settings.Default.ColorCurrentBlock;
+                case Block.State.Visited:
+                    return Properties.Settings.Default.ColorVisitedBlock;
+                case Block.State.Exit:
+                    return Properties.Settings.Default.ColorExitBlock;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         float[] getColour(Color color)
