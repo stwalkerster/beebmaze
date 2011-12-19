@@ -58,7 +58,7 @@ namespace BeebMaze.Render
 
         protected void drawScene()
         {
-            try
+            Gl.glPushMatrix();
             {
                 int rows = this.maze.GetUpperBound(1) + 1,
                     cols = this.maze.GetUpperBound(0) + 1;
@@ -90,14 +90,7 @@ namespace BeebMaze.Render
                     }
                 }
 
-                float maxX = xvertices[(2*cols) + 1, (2*rows) + 1];
-                float maxY = yvertices[(2*cols) + 1, (2*rows) + 1];
-
-                float scaleX = 2/maxX;
-                float scaleY = 2/maxY;
-
-                Gl.glTranslatef(-1, 1, 0);
-                Gl.glScalef(scaleX, -scaleY, 1);
+                positionScene(cols, rows, xvertices, yvertices);
 
                 Gl.glColor3fv(getColour(Properties.Settings.Default.ColorWalls));
 
@@ -235,18 +228,30 @@ namespace BeebMaze.Render
                     }
                 }
             }
-            catch (Exception ex)
-            {
-            }
+            Gl.glPopMatrix();
+        }
+
+        protected virtual void positionScene(int cols, int rows, float[,] xvertices, float[,] yvertices)
+        {
+            float maxX = xvertices[(2*cols) + 1, (2*rows) + 1];
+            float maxY = yvertices[(2*cols) + 1, (2*rows) + 1];
+
+            float scaleX = 2/maxX;
+            float scaleY = 2/maxY;
+
+            Gl.glTranslatef(-1, 1, 0);
+            Gl.glScalef(scaleX, -scaleY, 1);
         }
 
         protected virtual void drawCube(float x1, float y1, float x2, float y2, bool is3d = false)
         {
             Gl.glBegin(Gl.GL_POLYGON);
             Gl.glVertex3f(x1, y1, 0f);
-            Gl.glVertex3f(x1, y2, 0f);
-            Gl.glVertex3f(x2, y2, 0f);
             Gl.glVertex3f(x2, y1, 0f);
+            Gl.glVertex3f(x2, y2, 0f);
+            Gl.glVertex3f(x1, y2, 0f);
+
+
             Gl.glEnd();
         }
 

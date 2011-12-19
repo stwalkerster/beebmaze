@@ -21,6 +21,7 @@ namespace BeebMaze.Render
             simpleOpenGlControl1.MouseMove += new MouseEventHandler(simpleOpenGlControl1_MouseMove);
             simpleOpenGlControl1.MouseUp += new MouseEventHandler(simpleOpenGlControl1_MouseUp);
             simpleOpenGlControl1.Paint += new PaintEventHandler(simpleOpenGlControl1_Paint);
+            Gl.glEnable(Gl.GL_DEPTH_TEST);
         }
 
         protected override void simpleOpenGlControl1_SizeChanged(object sender, EventArgs e)
@@ -28,7 +29,7 @@ namespace BeebMaze.Render
             Gl.glViewport(0, 0, simpleOpenGlControl1.Size.Width, simpleOpenGlControl1.Size.Height);
             Gl.glMatrixMode(Gl.GL_PROJECTION);
             Gl.glLoadIdentity();
-            Glu.gluPerspective(60, ((double)simpleOpenGlControl1.Size.Width / (double)simpleOpenGlControl1.Size.Height), 1, 5);
+            Glu.gluPerspective(90, ((double)simpleOpenGlControl1.Size.Width / (double)simpleOpenGlControl1.Size.Height), 0.1, 7);
             Gl.glMatrixMode(Gl.GL_MODELVIEW);
         }
 
@@ -39,12 +40,13 @@ namespace BeebMaze.Render
             if (maze == null) return;
 
             Gl.glLoadIdentity();
-            //background - use unvisitedblock
+
+            //background
             float[] clearCol = getColour(Color.Magenta);
             Gl.glClearColor(clearCol[0], clearCol[1], clearCol[2], 1f);
 
-            Gl.glClear(Gl.GL_COLOR_BUFFER_BIT);
-   
+            Gl.glClear(Gl.GL_COLOR_BUFFER_BIT | Gl.GL_DEPTH_BUFFER_BIT);
+            
             Gl.glTranslatef(0, 0, -3);
 
             // view control
@@ -95,42 +97,52 @@ namespace BeebMaze.Render
             base.drawCube(x1, y1, x2, y2, is3d);
             if (is3d)
             {
-                float height = 0.1f;
-                Gl.glBegin(Gl.GL_POLYGON);
-                Gl.glVertex3f(x1, y1, height);
-                Gl.glVertex3f(x1, y2, height);
-                Gl.glVertex3f(x2, y2, height);
-                Gl.glVertex3f(x2, y1, height);
+                float height = 0.3f;
+
+                Gl.glBegin(Gl.GL_TRIANGLE_STRIP);
+                {
+                    Gl.glVertex3f(x1, y2, 0);
+                    Gl.glVertex3f(x1, y1, 0);
+                    Gl.glVertex3f(x1, y2, height);
+                    Gl.glVertex3f(x1, y1, height);
+                    Gl.glVertex3f(x2, y2, height);
+                    Gl.glVertex3f(x2, y1, height);
+                    Gl.glVertex3f(x2, y2, 0);
+                    Gl.glVertex3f(x2, y1, 0);
+                }
                 Gl.glEnd();
 
                 Gl.glBegin(Gl.GL_POLYGON);
-                Gl.glVertex3f(x1, y1, 0);
-                Gl.glVertex3f(x1, y2, 0);
-                Gl.glVertex3f(x1, y2, height);
-                Gl.glVertex3f(x1, y1, height);
+                {
+                    Gl.glVertex3f(x1, y1, 0);
+                    Gl.glVertex3f(x2, y1, 0);
+                    Gl.glVertex3f(x2, y1, height);
+                    Gl.glVertex3f(x1, y1, height);
+                }
                 Gl.glEnd();
 
                 Gl.glBegin(Gl.GL_POLYGON);
-                Gl.glVertex3f(x2, y1, 0);
-                Gl.glVertex3f(x2, y2, 0);
-                Gl.glVertex3f(x2, y2, height);
-                Gl.glVertex3f(x2, y1, height);
+                {
+                    Gl.glVertex3f(x2, y2, 0);
+                    Gl.glVertex3f(x1, y2, 0);
+                    Gl.glVertex3f(x1, y2, height);
+                    Gl.glVertex3f(x2, y2, height);
+                }
                 Gl.glEnd();
 
-                Gl.glBegin(Gl.GL_POLYGON);
-                Gl.glVertex3f(x1, y1, 0);
-                Gl.glVertex3f(x1, y1, 0);
-                Gl.glVertex3f(x2, y1, height);
-                Gl.glVertex3f(x2, y1, height);
-                Gl.glEnd();
-
-                Gl.glBegin(Gl.GL_POLYGON);
-                Gl.glVertex3f(x1, y2, 0);
-                Gl.glVertex3f(x1, y2, 0);
-                Gl.glVertex3f(x2, y2, height);
-                Gl.glVertex3f(x2, y2, height);
-                Gl.glEnd();
             }
+        }
+
+        protected override void positionScene(int cols, int rows, float[,] xvertices, float[,] yvertices)
+        {
+            float maxX = xvertices[(2 * cols) + 1, (2 * rows) + 1];
+            float maxY = yvertices[(2 * cols) + 1, (2 * rows) + 1];
+
+            float moveX = maxX/2;
+            float moveY = maxY/2;
+
+            Gl.glTranslatef(-moveX, moveY, 0);
+            Gl.glScalef(1, -1, 1);
         }
     }
 }
