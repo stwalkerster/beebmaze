@@ -27,7 +27,6 @@ namespace BeebMaze.Render
             Gl.glMatrixMode(Gl.GL_MODELVIEW);
         }
 
-
         protected void drawGridlines()
         {
             Gl.glColor3f(1, 0, 0);

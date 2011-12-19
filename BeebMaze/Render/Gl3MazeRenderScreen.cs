@@ -52,7 +52,7 @@ namespace BeebMaze.Render
             Gl.glRotatef(pitch, 1, 0, 0);
 
             drawGridlines();
-
+            
             drawScene();
             
         }
@@ -88,6 +88,49 @@ namespace BeebMaze.Render
         void simpleOpenGlControl1_MouseWheel(object sender, MouseEventArgs e)
         {
             //  e.Delta
+        }
+
+        protected override void drawCube(float x1, float y1, float x2, float y2, bool is3d = false)
+        {
+            base.drawCube(x1, y1, x2, y2, is3d);
+            if (is3d)
+            {
+                float height = 0.1f;
+                Gl.glBegin(Gl.GL_POLYGON);
+                Gl.glVertex3f(x1, y1, height);
+                Gl.glVertex3f(x1, y2, height);
+                Gl.glVertex3f(x2, y2, height);
+                Gl.glVertex3f(x2, y1, height);
+                Gl.glEnd();
+
+                Gl.glBegin(Gl.GL_POLYGON);
+                Gl.glVertex3f(x1, y1, 0);
+                Gl.glVertex3f(x1, y2, 0);
+                Gl.glVertex3f(x1, y2, height);
+                Gl.glVertex3f(x1, y1, height);
+                Gl.glEnd();
+
+                Gl.glBegin(Gl.GL_POLYGON);
+                Gl.glVertex3f(x2, y1, 0);
+                Gl.glVertex3f(x2, y2, 0);
+                Gl.glVertex3f(x2, y2, height);
+                Gl.glVertex3f(x2, y1, height);
+                Gl.glEnd();
+
+                Gl.glBegin(Gl.GL_POLYGON);
+                Gl.glVertex3f(x1, y1, 0);
+                Gl.glVertex3f(x1, y1, 0);
+                Gl.glVertex3f(x2, y1, height);
+                Gl.glVertex3f(x2, y1, height);
+                Gl.glEnd();
+
+                Gl.glBegin(Gl.GL_POLYGON);
+                Gl.glVertex3f(x1, y2, 0);
+                Gl.glVertex3f(x1, y2, 0);
+                Gl.glVertex3f(x2, y2, height);
+                Gl.glVertex3f(x2, y2, height);
+                Gl.glEnd();
+            }
         }
     }
 }

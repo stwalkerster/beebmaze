@@ -111,7 +111,8 @@ namespace BeebMaze.Render
                             xvertices[x*2, y*2],
                             yvertices[x*2, y*2],
                             xvertices[(x*2) + 1, (y*2) + 1],
-                            yvertices[(x*2) + 1, (y*2) + 1]
+                            yvertices[(x*2) + 1, (y*2) + 1],
+                            true
                             );
                     }
                 }
@@ -135,7 +136,8 @@ namespace BeebMaze.Render
                                 xvertices[(x*2) + 1, y*2],
                                 yvertices[(x*2) + 1, y*2],
                                 xvertices[(x*2) + 2, (y*2) + 1],
-                                yvertices[(x*2) + 2, (y*2) + 1]
+                                yvertices[(x*2) + 2, (y*2) + 1],
+                                true
                                 );
                         }
                         else
@@ -157,7 +159,8 @@ namespace BeebMaze.Render
                                 xvertices[x*2, (y*2) + 1],
                                 yvertices[x*2, (y*2) + 1],
                                 xvertices[(x*2) + 1, (y*2) + 2],
-                                yvertices[(x*2) + 1, (y*2) + 2]
+                                yvertices[(x * 2) + 1, (y * 2) + 2],
+                                true
                                 );
                         }
                         else
@@ -179,7 +182,8 @@ namespace BeebMaze.Render
                                 xvertices[(x*2) + 2, (y*2) + 1],
                                 yvertices[(x*2) + 2, (y*2) + 1],
                                 xvertices[(x*2) + 3, (y*2) + 2],
-                                yvertices[(x*2) + 3, (y*2) + 2]
+                                yvertices[(x * 2) + 3, (y * 2) + 2],
+                                true
                                 );
 
                         }
@@ -192,7 +196,8 @@ namespace BeebMaze.Render
                                 xvertices[(x*2) + 1, (y*2) + 2],
                                 yvertices[(x*2) + 1, (y*2) + 2],
                                 xvertices[(x*2) + 2, (y*2) + 3],
-                                yvertices[(x*2) + 3, (y*2) + 3]
+                                yvertices[(x * 2) + 3, (y * 2) + 3],
+                                true
                                 );
 
                         }
@@ -227,11 +232,6 @@ namespace BeebMaze.Render
                             );
 
                         #endregion
-
-                        #region doors
-
-
-                        #endregion
                     }
                 }
             }
@@ -240,7 +240,7 @@ namespace BeebMaze.Render
             }
         }
 
-       protected void drawCube(float x1, float y1, float x2, float y2, float height = 0f)
+        protected virtual void drawCube(float x1, float y1, float x2, float y2, bool is3d = false)
         {
             Gl.glBegin(Gl.GL_POLYGON);
             Gl.glVertex3f(x1, y1, 0f);
@@ -248,24 +248,6 @@ namespace BeebMaze.Render
             Gl.glVertex3f(x2, y2, 0f);
             Gl.glVertex3f(x2, y1, 0f);
             Gl.glEnd();
-
-            if(height != 0f)
-            {
-                Gl.glBegin(Gl.GL_POLYGON);
-                Gl.glVertex3f(x1, y1, height);
-                Gl.glVertex3f(x1, y2, height);
-                Gl.glVertex3f(x2, y2, height);
-                Gl.glVertex3f(x2, y1, height);
-                Gl.glEnd();
-
-                Gl.glBegin(Gl.GL_POLYGON);
-                Gl.glVertex3f(x1, y1, 0);
-                Gl.glVertex3f(x1, y2, 0);
-                Gl.glVertex3f(x1, y2, height);
-                Gl.glVertex3f(x1, y1, height);
-                Gl.glEnd();
-            }
-
         }
 
         protected float[] getColour(Color color)
