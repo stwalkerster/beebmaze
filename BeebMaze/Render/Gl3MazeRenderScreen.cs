@@ -24,12 +24,25 @@ namespace BeebMaze.Render
             Gl.glEnable(Gl.GL_DEPTH_TEST);
         }
 
+        void gluPerspective(double fovy, double aspect, double zNear, double zFar)
+        {
+            double xmin, xmax, ymin, ymax;
+
+            ymax = zNear * Math.Tan(fovy * Math.PI / 360.0);
+            ymin = -ymax;
+            xmin = ymin * aspect;
+            xmax = ymax * aspect;
+
+
+            Gl.glFrustum(xmin, xmax, ymin, ymax, zNear, zFar);
+        }
+
         protected override void simpleOpenGlControl1_SizeChanged(object sender, EventArgs e)
         {
             Gl.glViewport(0, 0, simpleOpenGlControl1.Size.Width, simpleOpenGlControl1.Size.Height);
             Gl.glMatrixMode(Gl.GL_PROJECTION);
             Gl.glLoadIdentity();
-            Glu.gluPerspective(90, ((double)simpleOpenGlControl1.Size.Width / (double)simpleOpenGlControl1.Size.Height), 0.1, 7);
+            gluPerspective(90, ((double)simpleOpenGlControl1.Size.Width / (double)simpleOpenGlControl1.Size.Height), 0.1, 7);
             Gl.glMatrixMode(Gl.GL_MODELVIEW);
         }
 
