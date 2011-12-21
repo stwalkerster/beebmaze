@@ -21,6 +21,221 @@ namespace BeebMaze.Render
 
         protected Block[,] lastKnownMaze;
 
+
+        /// <summary>
+        /// Draws the cube.
+        /// </summary>
+        /// <param name="x1">The x1.</param>
+        /// <param name="y1">The y1.</param>
+        /// <param name="x2">The x2.</param>
+        /// <param name="y2">The y2.</param>
+        /// <param name="is3d">if set to <c>true</c> [is3d].</param>
+        protected virtual void drawCube(float x1, float y1, float x2, float y2, bool is3d = false)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected virtual float[] getColour(Color color)
+        {
+            float[] colvector = new float[3];
+
+            colvector[0] = ((float)((uint)color.R) / 255);
+            colvector[1] = ((float)((uint)color.G) / 255);
+            colvector[2] = ((float)((uint)color.B) / 255);
+
+            return colvector;
+        }
+        protected Block[,] maze = new Block[0, 0];
+        protected virtual void positionScene(int cols, int rows, float[,] xvertices, float[,] yvertices)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected virtual void setColour(float r, float g, float b)
+        {
+            throw new NotImplementedException();
+        }
+        protected virtual void setColour(float[] v)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected void drawScene()
+        {
+            int rows = this.maze.GetUpperBound(1) + 1,
+                cols = this.maze.GetUpperBound(0) + 1;
+
+
+            // x,y
+            float[,] xvertices = new float[(2 * cols) + 2, (2 * rows) + 2];
+            float[,] yvertices = new float[(2 * cols) + 2, (2 * rows) + 2];
+
+
+            const float cellWidth = 0.3f;
+            const float cellHeight = 0.3f;
+
+            const float wallWidth = 0.1f;
+            const float wallHeight = 0.1f;
+
+            float xval = 0;
+            for (int x = 0; x < (2 * cols) + 2; x++)
+            {
+                if (x != 0) xval += x % 2 == 0 ? cellWidth : wallWidth;
+
+                float yval = 0;
+                for (int y = 0; y < (2 * rows) + 2; y++)
+                {
+                    if (y != 0) yval += y % 2 == 0 ? cellHeight : wallHeight;
+
+                    xvertices[x, y] = xval;
+                    yvertices[x, y] = yval;
+                }
+            }
+
+            positionScene(cols, rows, xvertices, yvertices);
+
+            setColour(getColour(Properties.Settings.Default.ColorWalls));
+
+            #region wall corners
+
+            for (int x = 0; x <= cols; x++)
+            {
+                for (int y = 0; y <= rows; y++)
+                {
+                    drawCube(
+                        xvertices[x * 2, y * 2],
+                        yvertices[x * 2, y * 2],
+                        xvertices[(x * 2) + 1, (y * 2) + 1],
+                        yvertices[(x * 2) + 1, (y * 2) + 1],
+                        true
+                        );
+                }
+            }
+
+            #endregion
+
+
+            for (int x = 0; x < cols; x++)
+            {
+                for (int y = 0; y < rows; y++)
+                {
+                    Block cell = maze[x, y];
+
+                    #region walls
+
+                    if (!cell.exitTop)
+                    {
+                        setColour(getColour(Properties.Settings.Default.ColorWalls));
+
+                        drawCube(
+                            xvertices[(x * 2) + 1, y * 2],
+                            yvertices[(x * 2) + 1, y * 2],
+                            xvertices[(x * 2) + 2, (y * 2) + 1],
+                            yvertices[(x * 2) + 2, (y * 2) + 1],
+                            true
+                            );
+                    }
+                    else
+                    {
+                        setColour(getColour(getDoorColour(cell.wTop, cell)));
+                        drawCube(
+                            xvertices[(x * 2) + 1, y * 2],
+                            yvertices[(x * 2) + 1, y * 2],
+                            xvertices[(x * 2) + 2, (y * 2) + 1],
+                            yvertices[(x * 2) + 2, (y * 2) + 1]
+                            );
+                    }
+
+                    if (!cell.exitLeft)
+                    {
+                        setColour(getColour(Properties.Settings.Default.ColorWalls));
+
+                        drawCube(
+                            xvertices[x * 2, (y * 2) + 1],
+                            yvertices[x * 2, (y * 2) + 1],
+                            xvertices[(x * 2) + 1, (y * 2) + 2],
+                            yvertices[(x * 2) + 1, (y * 2) + 2],
+                            true
+                            );
+                    }
+                    else
+                    {
+                        setColour(getColour(getDoorColour(cell.wLeft, cell)));
+                        drawCube(
+                            xvertices[x * 2, (y * 2) + 1],
+                            yvertices[x * 2, (y * 2) + 1],
+                            xvertices[(x * 2) + 1, (y * 2) + 2],
+                            yvertices[(x * 2) + 1, (y * 2) + 2]
+                            );
+                    }
+
+                    if ((x + 1) == cols)
+                    {
+                        setColour(getColour(Properties.Settings.Default.ColorWalls));
+
+                        drawCube(
+                            xvertices[(x * 2) + 2, (y * 2) + 1],
+                            yvertices[(x * 2) + 2, (y * 2) + 1],
+                            xvertices[(x * 2) + 3, (y * 2) + 2],
+                            yvertices[(x * 2) + 3, (y * 2) + 2],
+                            true
+                            );
+
+                    }
+
+                    if ((y + 1) == rows)
+                    {
+                        setColour(getColour(Properties.Settings.Default.ColorWalls));
+
+                        drawCube(
+                            xvertices[(x * 2) + 1, (y * 2) + 2],
+                            yvertices[(x * 2) + 1, (y * 2) + 2],
+                            xvertices[(x * 2) + 2, (y * 2) + 3],
+                            yvertices[(x * 2) + 3, (y * 2) + 3],
+                            true
+                            );
+
+                    }
+
+                    #endregion
+
+                    #region cells
+
+                    switch (cell.currentState)
+                    {
+                        case Block.State.Current:
+                            setColour(getColour(Properties.Settings.Default.ColorCurrentBlock));
+                            break;
+                        case Block.State.Exit:
+                            setColour(getColour(Properties.Settings.Default.ColorExitBlock));
+                            break;
+                        case Block.State.Unvisited:
+                            setColour(
+                                getColour(cell.hidden
+                                              ? Properties.Settings.Default.ColorWalls
+                                              : Properties.Settings.Default.ColorUnvisitedBlock));
+                            break;
+                        case Block.State.Visited:
+                            setColour(
+                                getColour(cell.inMaze
+                                              ? Properties.Settings.Default.ColorVisitedBlock
+                                              : Properties.Settings.Default.ColorIncorrectBlock));
+                            break;
+                    }
+                    drawCube(
+                        xvertices[(x * 2) + 1, (y * 2) + 1],
+                        yvertices[(x * 2) + 1, (y * 2) + 1],
+                        xvertices[(x * 2) + 2, (y * 2) + 2],
+                        yvertices[(x * 2) + 2, (y * 2) + 2]
+                        );
+
+                    #endregion
+                }
+            }
+
+        }
+
+
         public virtual void render(Block[,] maze)
         {
            
@@ -31,8 +246,8 @@ namespace BeebMaze.Render
 
             if(maze.Length != 0)
                 lastKnownMaze = maze;
-       
 
+            this.maze = maze;
         }
 
         internal static MazeRenderScreen Create()

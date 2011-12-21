@@ -59,7 +59,7 @@ namespace BeebMaze.Render
             Gl.glClearColor(clearCol[0], clearCol[1], clearCol[2], 1f);
 
             Gl.glClear(Gl.GL_COLOR_BUFFER_BIT | Gl.GL_DEPTH_BUFFER_BIT);
-            
+
             Gl.glTranslatef(0, 0, -3);
 
             // view control
@@ -67,9 +67,13 @@ namespace BeebMaze.Render
             Gl.glRotatef(pitch, 1, 0, 0);
 
             drawGridlines();
-            
-            drawScene();
-            
+
+            Gl.glPushMatrix();
+            {
+                drawScene();
+            }
+            Gl.glPopMatrix();
+
         }
 
         void simpleOpenGlControl1_MouseUp(object sender, MouseEventArgs e)
