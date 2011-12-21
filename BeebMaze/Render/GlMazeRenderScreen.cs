@@ -19,6 +19,12 @@ namespace BeebMaze.Render
             simpleOpenGlControl1.DestroyContexts();
         }
 
+        public override void render(Block[,] maze)
+        {
+            base.render(maze);
+            simpleOpenGlControl1.Invalidate();
+        }
+
         protected override void setColour(float r, float g, float b)
         {
             Gl.glColor3f(r, g, b);
