@@ -61,6 +61,7 @@
             this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -456,12 +457,26 @@
             this.checkBox3.Text = "Use fancy door rendering";
             this.checkBox3.UseVisualStyleBackColor = true;
             // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Checked = global::BeebMaze.Properties.Settings.Default.UseLighting;
+            this.checkBox4.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox4.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::BeebMaze.Properties.Settings.Default, "UseLighting", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkBox4.Location = new System.Drawing.Point(12, 257);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(116, 17);
+            this.checkBox4.TabIndex = 10;
+            this.checkBox4.Text = "Use lighting effects";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
             // Options
             // 
             this.AcceptButton = this.button1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(468, 288);
+            this.Controls.Add(this.checkBox4);
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.button9);
@@ -523,5 +538,6 @@
         private System.Windows.Forms.RadioButton radioButton9;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox checkBox4;
     }
 }

@@ -22,6 +22,8 @@ namespace BeebMaze.Render
             simpleOpenGlControl1.MouseUp += new MouseEventHandler(simpleOpenGlControl1_MouseUp);
             simpleOpenGlControl1.Paint += new PaintEventHandler(simpleOpenGlControl1_Paint);
             Gl.glEnable(Gl.GL_DEPTH_TEST);
+            Gl.glEnable(Gl.GL_NORMALIZE);
+            Gl.glEnable(Gl.GL_COLOR_MATERIAL);
         }
 
         void gluPerspective(double fovy, double aspect, double zNear, double zFar)
@@ -60,13 +62,16 @@ namespace BeebMaze.Render
 
             Gl.glClear(Gl.GL_COLOR_BUFFER_BIT | Gl.GL_DEPTH_BUFFER_BIT);
 
+            doLighting();
+
+
             Gl.glTranslatef(0, 0, -3);
 
             // view control
             Gl.glRotatef(yaw, 0, 1, 0);
             Gl.glRotatef(pitch, 1, 0, 0);
 
-            drawGridlines();
+           // drawGridlines();
 
             Gl.glPushMatrix();
             {
@@ -74,6 +79,42 @@ namespace BeebMaze.Render
             }
             Gl.glPopMatrix();
 
+        }
+
+        private void doLighting()
+        {
+            if (Properties.Settings.Default.UseLighting)
+            {
+                Gl.glEnable(Gl.GL_LIGHTING);
+                Gl.glEnable(Gl.GL_LIGHT0);
+            }
+            else
+            {
+                Gl.glDisable(Gl.GL_LIGHTING);
+                Gl.glDisable(Gl.GL_LIGHT0);
+                return;
+            }
+
+            // Configure position, diffuse light and specular light of light 0
+            float[] light0_position = {-2, 2, 2, 1};
+            float[] light0_diffuse = {0.7f, 0.7f, 0.7f, 1};
+            float[] light0_specular = {0.9f, 0.9f, 0.9f, 1};
+            // Set the scene ambient light to a low level
+            float[] lightscene_ambience = {0.4f, 0.4f, 0.4f, 1};
+            // Set the material specular reflectivity
+            float[] material_specular = {1, 1, 1, 1};
+
+            // Actually configure the scene ambient light
+            Gl.glLightModelfv(Gl.GL_LIGHT_MODEL_AMBIENT, lightscene_ambience);
+
+            // Actually configure the light, and enable it
+            Gl.glLightfv(Gl.GL_LIGHT0, Gl.GL_POSITION, light0_position);
+            Gl.glLightfv(Gl.GL_LIGHT0, Gl.GL_DIFFUSE, light0_diffuse);
+            Gl.glLightfv(Gl.GL_LIGHT0, Gl.GL_SPECULAR, light0_specular);
+
+            // Set the material specularity and shininess factor
+            Gl.glMaterialfv(Gl.GL_FRONT, Gl.GL_SPECULAR, material_specular);
+            Gl.glMaterialf(Gl.GL_FRONT, Gl.GL_SHININESS, 25);
         }
 
         void simpleOpenGlControl1_MouseUp(object sender, MouseEventArgs e)

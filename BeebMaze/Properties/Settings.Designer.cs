@@ -178,5 +178,17 @@ namespace BeebMaze.Properties {
                 this["UseFancyDoors"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool UseLighting {
+            get {
+                return ((bool)(this["UseLighting"]));
+            }
+            set {
+                this["UseLighting"] = value;
+            }
+        }
     }
 }
