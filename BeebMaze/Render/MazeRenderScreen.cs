@@ -217,9 +217,8 @@ namespace BeebMaze.Render
                             break;
                         case Block.State.Visited:
                             setColour(
-                                getColour(cell.inMaze
-                                              ? Properties.Settings.Default.ColorVisitedBlock
-                                              : Properties.Settings.Default.ColorIncorrectBlock));
+                                getColour(Properties.Settings.Default.ColorVisitedBlock)
+                                );
                             break;
                     }
                     drawCube(
