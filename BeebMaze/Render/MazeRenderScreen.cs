@@ -257,7 +257,7 @@ namespace BeebMaze.Render
 
         private void MazeRenderScreen_Paint(object sender, PaintEventArgs e)
         {
-            render(lastKnownMaze);
+            //render(lastKnownMaze);
         }
 
         internal static Type whatAmI(int identifier)

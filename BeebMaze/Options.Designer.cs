@@ -389,7 +389,6 @@
             // radioButton9
             // 
             this.radioButton9.AutoSize = true;
-            this.radioButton9.Enabled = false;
             this.radioButton9.Location = new System.Drawing.Point(6, 88);
             this.radioButton9.Name = "radioButton9";
             this.radioButton9.Size = new System.Drawing.Size(146, 17);
@@ -423,7 +422,6 @@
             // radioButton6
             // 
             this.radioButton6.AutoSize = true;
-            this.radioButton6.Enabled = false;
             this.radioButton6.Location = new System.Drawing.Point(6, 19);
             this.radioButton6.Name = "radioButton6";
             this.radioButton6.Size = new System.Drawing.Size(209, 17);
