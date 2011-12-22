@@ -14,7 +14,7 @@ namespace BeebMaze.Render
         {
             InitializeComponent();
             rendererToolStripStatusLabel.Text = string.Format(rendererToolStripStatusLabel.Tag.ToString(),
-                                                  ".NET Framework");
+                                                  "GDI+ Renderer (.NET Framework System.Drawing.Graphics)");
             panel1.Paint += new PaintEventHandler(panel1_Paint);
             panel1.PreviewKeyDown += Program.app.form1KeyDown;
         }

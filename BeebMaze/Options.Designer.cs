@@ -391,9 +391,9 @@
             this.radioButton9.AutoSize = true;
             this.radioButton9.Location = new System.Drawing.Point(6, 88);
             this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(146, 17);
+            this.radioButton9.Size = new System.Drawing.Size(109, 17);
             this.radioButton9.TabIndex = 3;
-            this.radioButton9.Text = "Debugging renderer (Null)";
+            this.radioButton9.Text = "Statistics renderer";
             this.radioButton9.UseVisualStyleBackColor = true;
             this.radioButton9.CheckedChanged += new System.EventHandler(this.radioButton9_CheckedChanged);
             // 
@@ -413,9 +413,9 @@
             this.radioButton7.AutoSize = true;
             this.radioButton7.Location = new System.Drawing.Point(6, 42);
             this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(124, 17);
+            this.radioButton7.Size = new System.Drawing.Size(200, 17);
             this.radioButton7.TabIndex = 1;
-            this.radioButton7.Text = "2D OpenGL renderer";
+            this.radioButton7.Text = "2D OpenGL renderer (recommended)";
             this.radioButton7.UseVisualStyleBackColor = true;
             this.radioButton7.CheckedChanged += new System.EventHandler(this.radioButton7_CheckedChanged);
             // 
@@ -424,9 +424,9 @@
             this.radioButton6.AutoSize = true;
             this.radioButton6.Location = new System.Drawing.Point(6, 19);
             this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(209, 17);
+            this.radioButton6.Size = new System.Drawing.Size(155, 17);
             this.radioButton6.TabIndex = 0;
-            this.radioButton6.Text = ".NET Drawing Framework box renderer";
+            this.radioButton6.Text = "GDI+ renderer (deprecated)";
             this.radioButton6.UseVisualStyleBackColor = true;
             this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton6_CheckedChanged);
             // 
