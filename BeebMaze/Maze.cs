@@ -161,14 +161,11 @@ namespace BeebMaze
                     if (mazeBlocks[x, y].inMaze)
                     {
                         mazeBlocks[x, y].currentState = Block.State.Current;
-                        Program.app.performRender();
-                    }
-                    else
-                    {
-                        Program.app.performRender();
                     }
                 }
             }
+
+            Program.app.performRender();
         }
 
         [Obsolete]
