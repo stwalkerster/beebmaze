@@ -62,8 +62,6 @@ namespace BeebMaze
                           {
                               height = panel1.Width / resolution,
                               width = panel1.Height / resolution,
-                              useMax = Settings.Default.PrimsRandomUseMax,
-                              randommaximum = (int) Settings.Default.PrimsRandomMaximum,
                           };
 
             _regenerationThread = new Thread(regenerationThread_DoWork) {Priority = ThreadPriority.Lowest};
@@ -130,56 +128,6 @@ namespace BeebMaze
                 _mazePanel.render(_realMaze.exportMaze());
             }
         }
-
-      /*  private void solveMaze()
-        {
-            bool changed;
-            
-
-            solvedMaze = true;
-
-            do
-            {
-                changed = false;
-                for (int x = 0; x < _width; x++)
-                {
-                    for (int y = 0; y < _height; y++)
-                    {
-                        Block block = _maze[x, y];
-
-                        if (!block.inMaze) continue;
-
-                        if (block.countEffectiveWalls() != 3) continue;
-
-                        block.inMaze = false;
-                        block.hidden = false;
-                        changed = true;
-                    }
-                }
-            } while (changed);
-
-            for (int x = 0; x < _width; x++)
-            {
-                for (int y = 0; y < _height; y++)
-                {
-                    if (_maze[x, y].inMaze)
-                    {
-                        _maze[x, y].currentState = Block.State.Current;
-                        performRender();
-                    }
-                    else
-                    {
-                        //if(_maze[x,y].currentState == Block.State.Visited)
-                        performRender();
-                    }
-                }
-            }
-        }
-        */
-        //public bool solvedMaze
-        //{
-        //    get; private set;
-        //}
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
@@ -271,8 +219,6 @@ namespace BeebMaze
         private struct ThreadStartData
         {
             public int height;
-            public int randommaximum;
-            public bool useMax;
             public int width;
         }
 

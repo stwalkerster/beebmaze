@@ -107,7 +107,7 @@ namespace BeebMaze
         public Block exitBlock { get; set; }
 
         public Block currentBlock { get; set; }
-        public bool isSolved { get; set; }
+        public bool isSolved { get; private set; }
 
         public int Width
         {
@@ -128,7 +128,46 @@ namespace BeebMaze
 
         public void solve()
         {
+            bool changed;
 
+
+            isSolved = true;
+
+            do
+            {
+                changed = false;
+                for (int x = 0; x < this.Width; x++)
+                {
+                    for (int y = 0; y < this.Height; y++)
+                    {
+                        Block block = this.mazeBlocks[x, y];
+
+                        if (!block.inMaze) continue;
+
+                        if (block.countEffectiveWalls() != 3) continue;
+
+                        block.inMaze = false;
+                        block.hidden = false;
+                        changed = true;
+                    }
+                }
+            } while (changed);
+
+            for (int x = 0; x < this.Width; x++)
+            {
+                for (int y = 0; y < this.Height; y++)
+                {
+                    if (mazeBlocks[x, y].inMaze)
+                    {
+                        mazeBlocks[x, y].currentState = Block.State.Current;
+                        Program.app.Invalidate(); //TODO: find a better invalidation point
+                    }
+                    else
+                    {
+                        Program.app.Invalidate(); //TODO: find a better invalidation point
+                    }
+                }
+            }
         }
 
         [Obsolete]
