@@ -9,24 +9,24 @@ using Tao.OpenGl;
 
 namespace BeebMaze.Render
 {
-    public partial class Gl3MazeRenderScreen : BeebMaze.Render.Gl2MazeRenderScreen
+    public partial class Gl3MazeRenderScreen : Gl2MazeRenderScreen
     {
         public Gl3MazeRenderScreen()
         {
             InitializeComponent();
             rendererToolStripStatusLabel.Text = string.Format(rendererToolStripStatusLabel.Tag.ToString(),
                                                   "3D OpenGL");
-            simpleOpenGlControl1.MouseWheel += new MouseEventHandler(simpleOpenGlControl1_MouseWheel);
-            simpleOpenGlControl1.MouseDown += new MouseEventHandler(simpleOpenGlControl1_MouseDown);
-            simpleOpenGlControl1.MouseMove += new MouseEventHandler(simpleOpenGlControl1_MouseMove);
-            simpleOpenGlControl1.MouseUp += new MouseEventHandler(simpleOpenGlControl1_MouseUp);
-            simpleOpenGlControl1.Paint += new PaintEventHandler(simpleOpenGlControl1_Paint);
+            simpleOpenGlControl1.MouseWheel += simpleOpenGlControl1_MouseWheel;
+            simpleOpenGlControl1.MouseDown += simpleOpenGlControl1_MouseDown;
+            simpleOpenGlControl1.MouseMove += simpleOpenGlControl1_MouseMove;
+            simpleOpenGlControl1.MouseUp += simpleOpenGlControl1_MouseUp;
+            simpleOpenGlControl1.Paint += simpleOpenGlControl1_Paint;
             Gl.glEnable(Gl.GL_DEPTH_TEST);
             Gl.glEnable(Gl.GL_NORMALIZE);
             Gl.glEnable(Gl.GL_COLOR_MATERIAL);
         }
 
-        void gluPerspective(double fovy, double aspect, double zNear, double zFar)
+        static void gluPerspective(double fovy, double aspect, double zNear, double zFar)
         {
             double xmin, xmax, ymin, ymax;
 
@@ -201,6 +201,27 @@ namespace BeebMaze.Render
 
             Gl.glTranslatef(-moveX, moveY, 0);
             Gl.glScalef(1, -1, 1);
+        }
+
+        private Maze.Direction currentDirection = Maze.Direction.DOWN;
+
+        protected override void performMove(Keys direction)
+        {
+            switch (direction)
+            {
+                case Keys.W:
+                    maze.move(currentDirection);
+                    break;
+                case Keys.A:
+                    currentDirection = (Maze.Direction) (((int) currentDirection + 3)%4);
+                    break;
+                case Keys.S:
+                    currentDirection = (Maze.Direction) (((int) currentDirection + 2)%4);
+                    break;
+                case Keys.D:
+                    currentDirection = (Maze.Direction) (((int) currentDirection + 1)%4);
+                    break;
+            }
         }
     }
 }

@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Windows.Forms;
 using Tao.OpenGl;
 namespace BeebMaze.Render
 {
-    public partial class GlMazeRenderScreen : BeebMaze.Render.MazeRenderScreen
+    public abstract partial class GlMazeRenderScreen : BeebMaze.Render.MazeRenderScreen
     {
-        public GlMazeRenderScreen()
+        protected GlMazeRenderScreen()
         {
             InitializeComponent();
             rendererToolStripStatusLabel.Text = string.Format(rendererToolStripStatusLabel.Tag.ToString(),

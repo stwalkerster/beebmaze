@@ -72,41 +72,7 @@ namespace BeebMaze
 
         public void form1KeyDown(object sender, PreviewKeyDownEventArgs e)
         {
-            if (e.KeyCode == Keys.Down && _realMaze.currentBlock.exitBottom)
-            {
-                _realMaze.currentBlock.currentState = Block.State.Visited;
-                performRender();
-                _realMaze.currentBlock = _realMaze.currentBlock.wBottom.getOpposite(_realMaze.currentBlock);
-                _realMaze.currentBlock.currentState = Block.State.Current;
-                performRender();
-            }
-
-            if (e.KeyCode == Keys.Up && _realMaze.currentBlock.exitTop)
-            {
-                _realMaze.currentBlock.currentState = Block.State.Visited;
-                performRender();
-                _realMaze.currentBlock = _realMaze.currentBlock.wTop.getOpposite(_realMaze.currentBlock);
-                _realMaze.currentBlock.currentState = Block.State.Current;
-                performRender();
-            }
-
-            if (e.KeyCode == Keys.Left && _realMaze.currentBlock.exitLeft)
-            {
-                _realMaze.currentBlock.currentState = Block.State.Visited;
-                performRender();
-                _realMaze.currentBlock = _realMaze.currentBlock.wLeft.getOpposite(_realMaze.currentBlock);
-                _realMaze.currentBlock.currentState = Block.State.Current;
-                performRender();
-            }
-
-            if (e.KeyCode == Keys.Right && _realMaze.currentBlock.exitRight)
-            {
-                _realMaze.currentBlock.currentState = Block.State.Visited;
-                performRender();
-                _realMaze.currentBlock = _realMaze.currentBlock.wRight.getOpposite(_realMaze.currentBlock);
-                _realMaze.currentBlock.currentState = Block.State.Current;
-                performRender();
-            }
+            _mazePanel.move(e.KeyCode);
 
             if (_realMaze.currentBlock == _realMaze.exitBlock)
                 _realMaze.solve();

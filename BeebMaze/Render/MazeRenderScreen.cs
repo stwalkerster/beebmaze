@@ -17,6 +17,26 @@ namespace BeebMaze.Render
         protected Maze lastKnownMaze;
 
 
+
+        public void move(Keys direction)
+        {
+            if (direction == Keys.Up)direction = Keys.W;
+            if (direction == Keys.Down) direction = Keys.S;
+            if (direction == Keys.Left) direction = Keys.A;
+            if (direction == Keys.Right) direction = Keys.D;
+             
+            if (direction == Keys.W ||
+                direction == Keys.A ||
+                direction == Keys.S ||
+                direction == Keys.D
+                )
+            {
+                performMove(direction);
+            }
+        }
+
+        protected abstract void performMove(Keys direction);
+
         /// <summary>
         /// Draws the cube.
         /// </summary>

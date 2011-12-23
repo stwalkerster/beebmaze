@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 
 namespace BeebMaze.Render
 {
@@ -22,6 +23,11 @@ namespace BeebMaze.Render
         }
 
         #region Overrides of MazeRenderScreen
+
+        protected override void performMove(Keys direction)
+        {
+            
+        }
 
         /// <summary>
         /// Draws the cube.

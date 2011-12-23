@@ -108,7 +108,61 @@ namespace BeebMaze
 
         public Block exitBlock { get; set; }
 
-        public Block currentBlock { get; set; }
+        public enum Direction
+        {
+            LEFT=3,
+            RIGHT=1,
+            DOWN =2,
+            UP = 0,
+        }
+
+        public void move(Direction direction)
+        {
+            switch (direction)
+            {
+                case Direction.LEFT:
+                    if (currentBlock.exitLeft)
+                    {
+                        currentBlock.currentState = Block.State.Visited;
+                        Block next = currentBlock.wLeft.getOpposite(currentBlock);
+                        next.currentState = Block.State.Current;
+                        currentBlock = next;
+                    }
+                    break;
+                case Direction.RIGHT:
+                    if (currentBlock.exitRight)
+                    {
+                        currentBlock.currentState = Block.State.Visited;
+                        Block next = currentBlock.wRight.getOpposite(currentBlock);
+                        next.currentState = Block.State.Current;
+                        currentBlock = next;
+                    }
+                    break;
+                case Direction.DOWN:
+                    if (currentBlock.exitBottom)
+                    {
+                        currentBlock.currentState = Block.State.Visited;
+                        Block next = currentBlock.wBottom.getOpposite(currentBlock);
+                        next.currentState = Block.State.Current;
+                        currentBlock = next;
+                    }
+                    break;
+                case Direction.UP:
+                    if (currentBlock.exitTop)
+                    {
+                        currentBlock.currentState = Block.State.Visited;
+                        Block next = currentBlock.wTop.getOpposite(currentBlock);
+                        next.currentState = Block.State.Current;
+                        currentBlock = next;
+                    }
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException("direction");
+            }
+            Program.app.performRender();
+        }
+
+        public Block currentBlock { get; private set; }
         public bool isSolved { get; private set; }
 
         public int Width

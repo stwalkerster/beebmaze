@@ -58,7 +58,26 @@ namespace BeebMaze.Render
             _scaleX = panel1.Width / maxX;
             _scaleY = panel1.Height / maxY;
         }
-        
+
+        protected override void performMove(Keys direction)
+        {
+            switch (direction)
+            {
+                case Keys.W:
+                    maze.move(Maze.Direction.UP);
+                    break;
+                case Keys.A:
+                    maze.move(Maze.Direction.LEFT);
+                    break;
+                case Keys.S:
+                    maze.move(Maze.Direction.DOWN);
+                    break;
+                case Keys.D:
+                    maze.move(Maze.Direction.RIGHT);
+                    break;     
+            }
+        }
+
         protected override void drawCube(float x1, float y1, float x2, float y2, bool is3d = false)
         {
             paintGraphics.FillPolygon(
