@@ -33,9 +33,9 @@ namespace BeebMaze.Render
         private float _scaleX;
         private float _scaleY;
 
-        public override void render(Block[,] maze)
+        public override void render(Maze pmaze)
         {
-            this.maze = maze;
+            this.maze = pmaze;
             panel1.Invalidate();
 
 

@@ -1,25 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using BeebMaze.Properties;
 
 namespace BeebMaze.Render
 {
-    public partial class MazeRenderScreen : UserControl
+    public abstract partial class MazeRenderScreen : UserControl
     {
-        public MazeRenderScreen()
+        protected MazeRenderScreen()
         {
             InitializeComponent();
             rendererToolStripStatusLabel.Text = string.Format(rendererToolStripStatusLabel.Tag.ToString(),
                                                   "Generic");
         }
 
-        protected Block[,] lastKnownMaze;
+        protected Maze lastKnownMaze;
 
 
         /// <summary>
@@ -30,40 +25,29 @@ namespace BeebMaze.Render
         /// <param name="x2">The x2.</param>
         /// <param name="y2">The y2.</param>
         /// <param name="is3d">if set to <c>true</c> [is3d].</param>
-        protected virtual void drawCube(float x1, float y1, float x2, float y2, bool is3d = false)
-        {
-            throw new NotImplementedException();
-        }
+        protected abstract void drawCube(float x1, float y1, float x2, float y2, bool is3d = false);
 
         protected virtual float[] getColour(Color color)
         {
             float[] colvector = new float[3];
 
-            colvector[0] = ((float)((uint)color.R) / 255);
-            colvector[1] = ((float)((uint)color.G) / 255);
-            colvector[2] = ((float)((uint)color.B) / 255);
+            colvector[0] = ((float)color.R / 255);
+            colvector[1] = ((float)color.G / 255);
+            colvector[2] = ((float)color.B / 255);
 
             return colvector;
         }
-        protected Block[,] maze = new Block[0, 0];
-        protected virtual void positionScene(int cols, int rows, float[,] xvertices, float[,] yvertices)
-        {
-            throw new NotImplementedException();
-        }
+        protected Maze maze;
+        protected abstract void positionScene(int cols, int rows, float[,] xvertices, float[,] yvertices);
 
-        protected virtual void setColour(float r, float g, float b)
-        {
-            throw new NotImplementedException();
-        }
-        protected virtual void setColour(float[] v)
-        {
-            throw new NotImplementedException();
-        }
+        protected abstract void setColour(float r, float g, float b);
+
+        protected abstract void setColour(float[] v);
 
         protected void drawScene()
         {
-            int rows = this.maze.GetUpperBound(1) + 1,
-                cols = this.maze.GetUpperBound(0) + 1;
+            int rows = this.maze.Height,
+                cols = this.maze.Width;
 
 
             // x,y
@@ -94,7 +78,7 @@ namespace BeebMaze.Render
 
             positionScene(cols, rows, xvertices, yvertices);
 
-            setColour(getColour(Properties.Settings.Default.ColorWalls));
+            setColour(getColour(Settings.Default.ColorWalls));
 
             #region wall corners
 
@@ -125,7 +109,7 @@ namespace BeebMaze.Render
 
                     if (!cell.exitTop)
                     {
-                        setColour(getColour(Properties.Settings.Default.ColorWalls));
+                        setColour(getColour(Settings.Default.ColorWalls));
 
                         drawCube(
                             xvertices[(x * 2) + 1, y * 2],
@@ -148,7 +132,7 @@ namespace BeebMaze.Render
 
                     if (!cell.exitLeft)
                     {
-                        setColour(getColour(Properties.Settings.Default.ColorWalls));
+                        setColour(getColour(Settings.Default.ColorWalls));
 
                         drawCube(
                             xvertices[x * 2, (y * 2) + 1],
@@ -171,7 +155,7 @@ namespace BeebMaze.Render
 
                     if ((x + 1) == cols)
                     {
-                        setColour(getColour(Properties.Settings.Default.ColorWalls));
+                        setColour(getColour(Settings.Default.ColorWalls));
 
                         drawCube(
                             xvertices[(x * 2) + 2, (y * 2) + 1],
@@ -185,7 +169,7 @@ namespace BeebMaze.Render
 
                     if ((y + 1) == rows)
                     {
-                        setColour(getColour(Properties.Settings.Default.ColorWalls));
+                        setColour(getColour(Settings.Default.ColorWalls));
 
                         drawCube(
                             xvertices[(x * 2) + 1, (y * 2) + 2],
@@ -204,20 +188,20 @@ namespace BeebMaze.Render
                     switch (cell.currentState)
                     {
                         case Block.State.Current:
-                            setColour(getColour(Properties.Settings.Default.ColorCurrentBlock));
+                            setColour(getColour(Settings.Default.ColorCurrentBlock));
                             break;
                         case Block.State.Exit:
-                            setColour(getColour(Properties.Settings.Default.ColorExitBlock));
+                            setColour(getColour(Settings.Default.ColorExitBlock));
                             break;
                         case Block.State.Unvisited:
                             setColour(
                                 getColour(cell.hidden
-                                              ? Properties.Settings.Default.ColorWalls
-                                              : Properties.Settings.Default.ColorUnvisitedBlock));
+                                              ? Settings.Default.ColorWalls
+                                              : Settings.Default.ColorUnvisitedBlock));
                             break;
                         case Block.State.Visited:
                             setColour(
-                                getColour(Properties.Settings.Default.ColorVisitedBlock)
+                                getColour(Settings.Default.ColorVisitedBlock)
                                 );
                             break;
                     }
@@ -235,18 +219,15 @@ namespace BeebMaze.Render
         }
 
 
-        public virtual void render(Block[,] maze)
+        public virtual void render(Maze pmaze)
         {
-           
-            if(maze == null)
-                maze = lastKnownMaze;
-            if(maze == null)
-                maze = new Block[0,0];
 
-            if(maze.Length != 0)
-                lastKnownMaze = maze;
+            if (pmaze == null)
+                pmaze = lastKnownMaze;
+            else
+                lastKnownMaze = pmaze;
 
-            this.maze = maze;
+            this.maze = pmaze;
         }
 
         internal static MazeRenderScreen Create()
@@ -275,12 +256,7 @@ namespace BeebMaze.Render
                     return null;
             }
         }
-
-        internal static int whatAmI(Type identifier)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         protected Color getDoorColour(Wall w, Block currentCell)
         {
             Block.State doorState = Block.State.Unvisited;
@@ -305,7 +281,7 @@ namespace BeebMaze.Render
                 if (w.getOpposite(currentCell).currentState == Block.State.Exit)
                     doorState = currentCell.currentState;
 
-                if (!Program.app.solvedMaze)
+                if (!maze.isSolved)
                 {
                     if (currentCell.currentState == Block.State.Exit
                         && w.getOpposite(currentCell).currentState == Block.State.Current)
@@ -332,13 +308,13 @@ namespace BeebMaze.Render
             switch (doorState)
             {
                 case Block.State.Unvisited:
-                    return Properties.Settings.Default.ColorDoors;
+                    return Settings.Default.ColorDoors;
                 case Block.State.Current:
-                    return Properties.Settings.Default.ColorCurrentBlock;
+                    return Settings.Default.ColorCurrentBlock;
                 case Block.State.Visited:
-                    return Properties.Settings.Default.ColorVisitedBlock;
+                    return Settings.Default.ColorVisitedBlock;
                 case Block.State.Exit:
-                    return Properties.Settings.Default.ColorExitBlock;
+                    return Settings.Default.ColorExitBlock;
                 default:
                     throw new ArgumentOutOfRangeException();
             }

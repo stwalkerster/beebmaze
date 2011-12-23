@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 
 namespace BeebMaze.Render
 {
-    public partial class NullMazeRenderScreen : BeebMaze.Render.MazeRenderScreen
+    public partial class NullMazeRenderScreen : MazeRenderScreen
     {
         public NullMazeRenderScreen()
         {
@@ -18,21 +12,45 @@ namespace BeebMaze.Render
 
         }
 
-        public override void render(Block[,] maze)
+        public override void render(Maze pmaze)
         {
-            base.render(maze);
-
-            if (maze == null)
-                maze = lastKnownMaze;
-            if (maze == null)
-                maze = new Block[0, 0];
-
-            if (maze.Length != 0)
-                lastKnownMaze = maze;
-
-            statX.Text = maze.GetLength(0).ToString();
-            statY.Text = maze.GetLength(1).ToString();
+            base.render(pmaze);
+            
+            statX.Text = pmaze.Width.ToString();
+            statY.Text = pmaze.Height.ToString();
             statRendered.Text = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
         }
+
+        #region Overrides of MazeRenderScreen
+
+        /// <summary>
+        /// Draws the cube.
+        /// </summary>
+        /// <param name="x1">The x1.</param>
+        /// <param name="y1">The y1.</param>
+        /// <param name="x2">The x2.</param>
+        /// <param name="y2">The y2.</param>
+        /// <param name="is3d">if set to <c>true</c> [is3d].</param>
+        protected override void drawCube(float x1, float y1, float x2, float y2, bool is3d = false)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void positionScene(int cols, int rows, float[,] xvertices, float[,] yvertices)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void setColour(float r, float g, float b)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void setColour(float[] v)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

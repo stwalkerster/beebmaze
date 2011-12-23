@@ -19,9 +19,9 @@ namespace BeebMaze.Render
             simpleOpenGlControl1.DestroyContexts();
         }
 
-        public override void render(Block[,] maze)
+        public override void render(Maze pmaze)
         {
-            base.render(maze);
+            base.render(pmaze);
             simpleOpenGlControl1.Invalidate();
         }
 

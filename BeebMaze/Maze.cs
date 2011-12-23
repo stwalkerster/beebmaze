@@ -6,12 +6,14 @@ using BeebMaze.Properties;
 
 namespace BeebMaze
 {
-    class Maze
+    public class Maze
     {
         public Maze(int width, int height)
         {
-            this.Height = height;
-            this.Width = width;
+            // swapped to fix something 
+            // TODO: locate cause of need for this
+            this.Height = width;
+            this.Width = height;
 
             this.generate();
         }
@@ -122,8 +124,7 @@ namespace BeebMaze
 
         public Block this[int x, int y]
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get { return mazeBlocks[x, y]; }
         }
 
         public void solve()
@@ -160,11 +161,11 @@ namespace BeebMaze
                     if (mazeBlocks[x, y].inMaze)
                     {
                         mazeBlocks[x, y].currentState = Block.State.Current;
-                        Program.app.Invalidate(); //TODO: find a better invalidation point
+                        Program.app.performRender();
                     }
                     else
                     {
-                        Program.app.Invalidate(); //TODO: find a better invalidation point
+                        Program.app.performRender();
                     }
                 }
             }

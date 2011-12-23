@@ -113,7 +113,7 @@ namespace BeebMaze
 
         }
 
-        private void performRender()
+        public void performRender()
         {
             if(_mazePanel == null || (_mazePanel.GetType() != MazeRenderScreen.whatAmI(Settings.Default.DisplayDriver)))
             {
@@ -125,7 +125,7 @@ namespace BeebMaze
 
             lock (_mazeLock)
             {
-                _mazePanel.render(_realMaze.exportMaze());
+                _mazePanel.render(_realMaze);
             }
         }
 
@@ -149,14 +149,12 @@ namespace BeebMaze
             updateData("Generating maze", 0);
 
             Maze realMaze = new Maze(width, height);
-            var maze = realMaze.exportMaze();
             
             
             updateData("Rendering maze", 0);
             lock (_mazeLock)
             {
                 this._realMaze = realMaze;
-                //_maze = maze;
             }
 
             this.Invoke(new Action(performRender));
