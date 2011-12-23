@@ -161,6 +161,7 @@ namespace BeebMaze
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
             new Options().ShowDialog();
+            performRender();
         }
 
         private void toolStripButton5_Click(object sender, EventArgs e)
