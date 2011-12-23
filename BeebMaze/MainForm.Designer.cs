@@ -128,7 +128,7 @@
             this.toolStripButton2});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(350, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(319, 25);
             this.toolStrip1.TabIndex = 0;
             // 
             // toolStripButton1
@@ -137,7 +137,7 @@
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(51, 22);
-            this.toolStripButton1.Text = "New";
+            this.toolStripButton1.Text = "&New";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // toolStripButton3
@@ -146,7 +146,7 @@
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(55, 22);
-            this.toolStripButton3.Text = "Solve";
+            this.toolStripButton3.Text = "&Solve";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // toolStripSeparator1
@@ -181,13 +181,13 @@
             this.toolStripButton2.Text = "About";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(896, 488);
             this.Controls.Add(this.toolStripContainer1);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "BeebMaze for Windows";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.form1FormClosing);
             this.Load += new System.EventHandler(this.form1Load);

@@ -104,6 +104,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Maze.cs" />
     <Compile Include="Options.cs">
       <SubType>Form</SubType>
     </Compile>

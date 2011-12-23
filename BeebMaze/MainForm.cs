@@ -201,104 +201,10 @@ namespace BeebMaze
             int width = data.width;
             int height = data.height;
 
+            updateData("Generating maze", 0);
 
-            var maze = new Block[width,height];
+            var maze = new Maze(width, height).exportMaze();
 
-            updateData("Generating blocks...");
-
-            for (int x = 0; x < width; x++)
-            {
-                updateData(percent: x/width);
-                for (int y = 0; y < height; y++)
-                {
-                    maze[x, y] = new Block();
-
-                    Wall w;
-
-                    if (x != 0)
-                    {
-                        w = new Wall(maze[x, y], maze[x - 1, y], true);
-                        maze[x, y].wLeft = w;
-                        maze[x - 1, y].wRight = w;
-                    }
-
-                    if (y != 0)
-                    {
-                        w = new Wall(maze[x, y], maze[x, y - 1], true);
-                        maze[x, y].wTop = w;
-                        maze[x, y - 1].wBottom = w;
-                    }
-
-                    maze[x, y].hidden = !Settings.Default.RevealMaze;
-                }
-            }
-
-            updateData("Starting Prim's", 0/((width*height*2) + width + height));
-
-            // start randomised prim's algorithm
-
-            // using 0,0 as initial maze block
-
-            var walls = new List<KeyValuePair<Wall, Block>>();
-
-            Block startBlock = maze[0, 0];
-
-            startBlock.inMaze = true;
-            startBlock.isExit = true;
-
-            if (startBlock.wTop != null)
-                walls.Add(new KeyValuePair<Wall, Block>(startBlock.wTop, startBlock));
-            if (startBlock.wRight != null)
-                walls.Add(new KeyValuePair<Wall, Block>(startBlock.wRight, startBlock));
-            if (startBlock.wBottom != null)
-                walls.Add(new KeyValuePair<Wall, Block>(startBlock.wBottom, startBlock));
-            if (startBlock.wLeft != null)
-                walls.Add(new KeyValuePair<Wall, Block>(startBlock.wLeft, startBlock));
-
-            var rnd = new Random();
-
-            // While there are walls in the list:
-            int maxWalls = 400;
-            while (walls.Count > 0)
-            {
-                maxWalls = walls.Count > maxWalls ? walls.Count : maxWalls;
-                updateData("Running Prim's: " + walls.Count + " / " + maxWalls + " = " + walls.Count*100/maxWalls,
-                           walls.Count*100/maxWalls);
-                // Pick a random wall from the list. If the cell on the opposite side isn't in the maze yet:
-                int wallId = rnd.Next(0,
-                                      data.useMax
-                                          ? walls.Count
-                                          : (walls.Count > data.randommaximum ? data.randommaximum : walls.Count));
-
-                Block newBlock = walls[wallId].Key.getOpposite(walls[wallId].Value);
-
-                if (!newBlock.inMaze)
-                {
-                    // Make the wall a passage and mark the cell on the opposite side as part of the maze.
-                    walls[wallId].Key.present = false;
-                    newBlock.inMaze = true;
-
-                    // Add the neighboring walls of the cell to the wall list.
-                    if (newBlock.wLeft != null)
-                        walls.Add(new KeyValuePair<Wall, Block>(newBlock.wLeft, newBlock));
-                    if (newBlock.wRight != null)
-                        walls.Add(new KeyValuePair<Wall, Block>(newBlock.wRight, newBlock));
-                    if (newBlock.wTop != null)
-                        walls.Add(new KeyValuePair<Wall, Block>(newBlock.wTop, newBlock));
-                    if (newBlock.wBottom != null)
-                        walls.Add(new KeyValuePair<Wall, Block>(newBlock.wBottom, newBlock));
-                }
-
-                walls.RemoveAt(wallId);
-            }
-
-
-            _exitBlock = maze[width - 1, height - 1];
-            _exitBlock.isExit = true;
-            _exitBlock.currentState = Block.State.Exit;
-
-            currentBlock = startBlock;
-            currentBlock.currentState = Block.State.Current;
 
 
             updateData("Rendering maze", 0);
