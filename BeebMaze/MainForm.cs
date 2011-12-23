@@ -11,20 +11,22 @@ namespace BeebMaze
     {
         private readonly object _mazeLock = new object();
 
-        private Block _exitBlock;
-        private int _height;
-        private Block[,] _maze;
+        //private Block _exitBlock;
+        //private int _height;
+      //  private Block[,] _maze;
+        private Maze _realMaze;
         private MazeRenderScreen _mazePanel;
 
         private Thread _regenerationThread;
-        private int _width;
+        //private int _width;
+
 
         public MainForm()
         {
             InitializeComponent();
         }
 
-        private Block currentBlock { get; set; }
+        //private Block currentBlock { get; set; }
 
         private void form1Load(object sender, EventArgs e)
         {
@@ -51,22 +53,15 @@ namespace BeebMaze
         {
             panel1.Visible = false;
             panel1.Controls.Clear();
-            currentBlock = null;
-            _exitBlock = null;
-
-            _width = panel1.Width/resolution;
-            _height = panel1.Height/resolution;
-            _maze = null;
-            solvedMaze = false;
-
+            
             updateData("Initialising thread...", -1);
 
             Thread.Sleep(100);
 
             var tsd = new ThreadStartData
                           {
-                              height = _height,
-                              width = _width,
+                              height = panel1.Width / resolution,
+                              width = panel1.Height / resolution,
                               useMax = Settings.Default.PrimsRandomUseMax,
                               randommaximum = (int) Settings.Default.PrimsRandomMaximum,
                           };
@@ -79,44 +74,45 @@ namespace BeebMaze
 
         public void form1KeyDown(object sender, PreviewKeyDownEventArgs e)
         {
-            if (e.KeyCode == Keys.Down && currentBlock.exitBottom)
+            if (e.KeyCode == Keys.Down && _realMaze.currentBlock.exitBottom)
             {
-                currentBlock.currentState = Block.State.Visited;
+                _realMaze.currentBlock.currentState = Block.State.Visited;
                 performRender();
-                currentBlock = currentBlock.wBottom.getOpposite(currentBlock);
-                currentBlock.currentState = Block.State.Current;
+                _realMaze.currentBlock = _realMaze.currentBlock.wBottom.getOpposite(_realMaze.currentBlock);
+                _realMaze.currentBlock.currentState = Block.State.Current;
                 performRender();
             }
 
-            if (e.KeyCode == Keys.Up && currentBlock.exitTop)
+            if (e.KeyCode == Keys.Up && _realMaze.currentBlock.exitTop)
             {
-                currentBlock.currentState = Block.State.Visited;
+                _realMaze.currentBlock.currentState = Block.State.Visited;
                 performRender();
-                currentBlock = currentBlock.wTop.getOpposite(currentBlock);
-                currentBlock.currentState = Block.State.Current;
+                _realMaze.currentBlock = _realMaze.currentBlock.wTop.getOpposite(_realMaze.currentBlock);
+                _realMaze.currentBlock.currentState = Block.State.Current;
                 performRender();
             }
 
-            if (e.KeyCode == Keys.Left && currentBlock.exitLeft)
+            if (e.KeyCode == Keys.Left && _realMaze.currentBlock.exitLeft)
             {
-                currentBlock.currentState = Block.State.Visited;
+                _realMaze.currentBlock.currentState = Block.State.Visited;
                 performRender();
-                currentBlock = currentBlock.wLeft.getOpposite(currentBlock);
-                currentBlock.currentState = Block.State.Current;
+                _realMaze.currentBlock = _realMaze.currentBlock.wLeft.getOpposite(_realMaze.currentBlock);
+                _realMaze.currentBlock.currentState = Block.State.Current;
                 performRender();
             }
 
-            if (e.KeyCode == Keys.Right && currentBlock.exitRight)
+            if (e.KeyCode == Keys.Right && _realMaze.currentBlock.exitRight)
             {
-                currentBlock.currentState = Block.State.Visited;
+                _realMaze.currentBlock.currentState = Block.State.Visited;
                 performRender();
-                currentBlock = currentBlock.wRight.getOpposite(currentBlock);
-                currentBlock.currentState = Block.State.Current;
+                _realMaze.currentBlock = _realMaze.currentBlock.wRight.getOpposite(_realMaze.currentBlock);
+                _realMaze.currentBlock.currentState = Block.State.Current;
                 performRender();
             }
 
-            if (currentBlock == _exitBlock)
-                solveMaze();
+            if (_realMaze.currentBlock == _realMaze.exitBlock)
+                _realMaze.solve();
+
         }
 
         private void performRender()
@@ -131,13 +127,14 @@ namespace BeebMaze
 
             lock (_mazeLock)
             {
-                _mazePanel.render(_maze);
+                _mazePanel.render(_realMaze.exportMaze());
             }
         }
 
-        private void solveMaze()
+      /*  private void solveMaze()
         {
             bool changed;
+            
 
             solvedMaze = true;
 
@@ -178,11 +175,11 @@ namespace BeebMaze
                 }
             }
         }
-
-        public bool solvedMaze
-        {
-            get; private set;
-        }
+        */
+        //public bool solvedMaze
+        //{
+        //    get; private set;
+        //}
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
@@ -191,7 +188,7 @@ namespace BeebMaze
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            solveMaze();
+            _realMaze.solve();
         }
 
         private void regenerationThread_DoWork(object startData)
@@ -203,14 +200,15 @@ namespace BeebMaze
 
             updateData("Generating maze", 0);
 
-            var maze = new Maze(width, height).exportMaze();
-
-
-
+            Maze realMaze = new Maze(width, height);
+            var maze = realMaze.exportMaze();
+            
+            
             updateData("Rendering maze", 0);
             lock (_mazeLock)
             {
-                _maze = maze;
+                this._realMaze = realMaze;
+                //_maze = maze;
             }
 
             this.Invoke(new Action(performRender));

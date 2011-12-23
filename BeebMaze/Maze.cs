@@ -8,7 +8,7 @@ namespace BeebMaze
 {
     class Maze
     {
-        public  Maze(int width, int height)
+        public Maze(int width, int height)
         {
             this.Height = height;
             this.Width = width;
@@ -18,7 +18,7 @@ namespace BeebMaze
 
         private void generate()
         {
-            mazeBlocks = new Block[this.Width,this.Height];
+            mazeBlocks = new Block[this.Width, this.Height];
 
             for (int x = 0; x < this.Width; x++)
             {
@@ -104,7 +104,7 @@ namespace BeebMaze
 
         private Block[,] mazeBlocks;
 
-        private Block exitBlock;
+        public Block exitBlock { get; set; }
 
         public Block currentBlock { get; set; }
         public bool isSolved { get; set; }
@@ -116,7 +116,8 @@ namespace BeebMaze
         }
         public int Height
         {
-            get; private set;
+            get;
+            private set;
         }
 
         public Block this[int x, int y]
@@ -127,7 +128,7 @@ namespace BeebMaze
 
         public void solve()
         {
-            
+
         }
 
         [Obsolete]
